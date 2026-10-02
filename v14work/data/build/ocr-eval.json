@@ -1,0 +1,9 @@
+{
+ "when": "2026-09-06T10:30:27.270Z",
+ "samples": 89,
+ "scoreable": 50,
+ "correct": 3,
+ "wrong": 41,
+ "noRead": 6,
+ "accuracy": 0.06
+}

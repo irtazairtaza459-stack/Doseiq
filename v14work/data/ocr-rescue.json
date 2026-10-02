@@ -1,0 +1,10 @@
+[
+  {"fragment":"gesic","brand":"Wilgesic","generic":"Orphenadrine + Paracetamol","source":"Observed OCR variant; manual confirmation required"},
+  {"fragment":"wil gesic","brand":"Wilgesic","generic":"Orphenadrine + Paracetamol","source":"Observed OCR variant; manual confirmation required"},
+  {"fragment":"wilgesic","brand":"Wilgesic","generic":"Orphenadrine + Paracetamol","source":"Observed OCR variant; manual confirmation required"},
+  {"fragment":"val","brand":"Valmera","generic":"Mirogabalin","source":"Observed OCR fragment; manual confirmation required"},
+  {"fragment":"cobol","brand":"Cobolmin SL","generic":"Methylcobalamin","source":"Observed OCR fragment; manual confirmation required"},
+  {"fragment":"copter","brand":"Cobolmin SL","generic":"Methylcobalamin","source":"Observed OCR variant; manual confirmation required"},
+  {"fragment":"copter","brand":"Cobolmin SL","generic":"Methylcobalamin","source":"Observed OCR variant; manual confirmation required"},
+  {"fragment":"vitriovit","brand":"Vitriovit","generic":"","source":"Brand needs product verification; manual confirmation required"}
+]

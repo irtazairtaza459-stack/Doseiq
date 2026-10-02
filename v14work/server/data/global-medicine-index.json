@@ -1,0 +1,23 @@
+[
+  {
+    "generic": "Doxycycline Monohydrate",
+    "brand": "Adoxa",
+    "strength": "100 mg",
+    "dosageForm": "Oral Tablet",
+    "pack": "Adoxa Pak 2/100",
+    "rxcui": "795712",
+    "aliases": [
+      "Adoxa",
+      "Adoxa Pak",
+      "Adoxa Pak 2/100",
+      "Adoxa 100",
+      "doxycycline monohydrate 100 mg"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-09-30T00:00:00.000Z"
+  }
+]

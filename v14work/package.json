@@ -1,0 +1,33 @@
+{
+  "name": "doseiq",
+  "version": "1.2.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "concurrently -k \"node --watch server/index.js\" \"vite\"",
+    "build": "vite build",
+    "start": "node server/index.js",
+    "data": "node scripts/build-interactions.mjs && node scripts/fetch-labels.mjs && node scripts/enrich-side-effects.mjs",
+    "eval:ocr": "node scripts/eval-ocr.mjs",
+    "data:raw": "bash scripts/fetch-raw.sh",
+    "eval": "node scripts/eval-ocr.mjs && node scripts/eval-printed.mjs",
+    "samples": "python3 scripts/make-printed-samples.py",
+    "data:prices": "node scripts/fetch-prices.mjs",
+    "data:global": "node scripts/sync-global.mjs"
+  },
+  "dependencies": {
+    "compression": "^1.7.5",
+    "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.3",
+    "concurrently": "^9.1.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tesseract.js": "^7.0.0",
+    "vite": "^5.4.10"
+  }
+}

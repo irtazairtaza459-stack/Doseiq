@@ -1,0 +1,1425 @@
+[
+  {
+    "generic": "Paracetamol",
+    "ddinter": "Acetaminophen",
+    "brands": [
+      "Panadol",
+      "Calpol",
+      "Provas",
+      "Febrol",
+      "Paracet",
+      "Pyrigesic",
+      "Disprol"
+    ],
+    "urdu": "پیراسیٹامول",
+    "purposeEn": "Fever and pain relief",
+    "purposeUr": "بخار اور درد کے لیے",
+    "class": "analgesic",
+    "allergyGroup": "paracetamol",
+    "timing": "after_meal",
+    "missedRule": "prn",
+    "maxDaily": "4000 mg",
+    "interactionData": "ddinter",
+    "hepatic": {
+      "level": "caution",
+      "note": "The maximum daily dose is lower in liver disease. Never exceed what your doctor set.",
+      "noteUr": "جگر کی بیماری میں روزانہ زیادہ سے زیادہ خوراک کم ہوتی ہے۔"
+    }
+  },
+  {
+    "generic": "Ibuprofen",
+    "ddinter": "Ibuprofen",
+    "brands": [
+      "Brufen",
+      "Ibugesic",
+      "Profinal",
+      "Rufen"
+    ],
+    "urdu": "آئبوپروفین",
+    "purposeEn": "Pain, fever and inflammation",
+    "purposeUr": "درد، سوزش اور بخار کے لیے",
+    "class": "nsaid",
+    "allergyGroup": "nsaid",
+    "timing": "after_meal",
+    "missedRule": "prn",
+    "maxDaily": "1200 mg",
+    "interactionData": "ddinter",
+    "renal": {
+      "avoidBelow": 30,
+      "adjustBelow": 60,
+      "note": "NSAIDs can worsen kidney function — avoid if kidneys are weak.",
+      "noteUr": "یہ دوا گردوں کو مزید نقصان دے سکتی ہے۔"
+    }
+  },
+  {
+    "generic": "Diclofenac",
+    "ddinter": "Diclofenac",
+    "brands": [
+      "Voltral",
+      "Dicloran",
+      "Caflam",
+      "Artifen",
+      "Diclomol"
+    ],
+    "urdu": "ڈائیکلوفینیک",
+    "purposeEn": "Pain and inflammation",
+    "purposeUr": "درد اور سوزش کے لیے",
+    "class": "nsaid",
+    "allergyGroup": "nsaid",
+    "timing": "after_meal",
+    "missedRule": "prn",
+    "interactionData": "ddinter",
+    "renal": {
+      "avoidBelow": 30,
+      "adjustBelow": 60,
+      "note": "NSAIDs can worsen kidney function.",
+      "noteUr": "یہ دوا گردوں کو مزید نقصان دے سکتی ہے۔"
+    }
+  },
+  {
+    "generic": "Mefenamic Acid",
+    "ddinter": "Mefenamic acid",
+    "brands": [
+      "Ponstan",
+      "Mefnac",
+      "Ponstel"
+    ],
+    "urdu": "میفینامک ایسڈ",
+    "purposeEn": "Pain and menstrual cramps",
+    "purposeUr": "درد اور ماہواری کے درد کے لیے",
+    "class": "nsaid",
+    "allergyGroup": "nsaid",
+    "timing": "after_meal",
+    "missedRule": "prn",
+    "interactionData": "ddinter",
+    "renal": {
+      "avoidBelow": 30,
+      "adjustBelow": 60,
+      "note": "NSAIDs can worsen kidney function.",
+      "noteUr": "یہ دوا گردوں کو مزید نقصان دے سکتی ہے۔"
+    }
+  },
+  {
+    "generic": "Nimesulide",
+    "ddinter": "Nimesulide",
+    "brands": [
+      "Nims",
+      "Nise",
+      "Nimolid"
+    ],
+    "urdu": "نمیسولائیڈ",
+    "purposeEn": "Pain and inflammation",
+    "purposeUr": "درد اور سوزش کے لیے",
+    "class": "nsaid",
+    "allergyGroup": "nsaid",
+    "timing": "after_meal",
+    "missedRule": "prn",
+    "interactionData": "none",
+    "renal": {
+      "avoidBelow": 30,
+      "adjustBelow": 60,
+      "note": "NSAIDs can worsen kidney function.",
+      "noteUr": "یہ دوا گردوں کو مزید نقصان دے سکتی ہے۔"
+    },
+    "hepatic": {
+      "level": "avoid",
+      "note": "Known risk of liver injury — avoid if you have liver disease.",
+      "noteUr": "جگر کو نقصان پہنچا سکتی ہے — جگر کی بیماری میں نہ لیں۔"
+    }
+  },
+  {
+    "generic": "Naproxen",
+    "ddinter": "Naproxen",
+    "brands": [
+      "Naprosyn",
+      "Synflex"
+    ],
+    "urdu": "نیپروکسین",
+    "purposeEn": "Pain and arthritis",
+    "purposeUr": "درد اور جوڑوں کے درد کے لیے",
+    "class": "nsaid",
+    "allergyGroup": "nsaid",
+    "timing": "after_meal",
+    "missedRule": "prn",
+    "interactionData": "ddinter",
+    "renal": {
+      "avoidBelow": 30,
+      "adjustBelow": 60,
+      "note": "NSAIDs can worsen kidney function.",
+      "noteUr": "یہ دوا گردوں کو مزید نقصان دے سکتی ہے۔"
+    }
+  },
+  {
+    "generic": "Aspirin",
+    "ddinter": "Acetylsalicylic acid",
+    "brands": [
+      "Disprin",
+      "Loprin",
+      "Ascard",
+      "Aspirin"
+    ],
+    "urdu": "اسپرین",
+    "purposeEn": "Pain relief and blood thinning",
+    "purposeUr": "درد اور خون پتلا کرنے کے لیے",
+    "class": "nsaid",
+    "allergyGroup": "nsaid",
+    "timing": "after_meal",
+    "missedRule": "once_daily",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Tramadol",
+    "ddinter": "Tramadol",
+    "brands": [
+      "Tramal",
+      "Tonoflex",
+      "Ultram"
+    ],
+    "urdu": "ٹرامادول",
+    "purposeEn": "Moderate to severe pain",
+    "purposeUr": "شدید درد کے لیے",
+    "class": "opioid",
+    "allergyGroup": "opioid",
+    "timing": "any",
+    "missedRule": "prn",
+    "interactionData": "ddinter",
+    "renal": {
+      "adjustBelow": 30,
+      "note": "Dose interval usually needs extending.",
+      "noteUr": "خوراک کا وقفہ بڑھانا پڑتا ہے۔"
+    },
+    "hepatic": {
+      "level": "caution",
+      "note": "The dose interval is usually extended in liver disease.",
+      "noteUr": "جگر کی بیماری میں خوراک کا وقفہ بڑھایا جاتا ہے۔"
+    }
+  },
+  {
+    "generic": "Amoxicillin",
+    "ddinter": "Amoxicillin",
+    "brands": [
+      "Amoxil",
+      "Moxikind",
+      "Amoxypen"
+    ],
+    "urdu": "اموکسیسلن",
+    "purposeEn": "Antibiotic for bacterial infections",
+    "purposeUr": "جراثیمی انفیکشن کی اینٹی بائیوٹک",
+    "class": "antibiotic",
+    "allergyGroup": "penicillin",
+    "timing": "after_meal",
+    "missedRule": "antibiotic_fixed",
+    "course": true,
+    "interactionData": "ddinter",
+    "renal": {
+      "adjustBelow": 30,
+      "note": "Dose interval usually needs extending.",
+      "noteUr": "خوراک کا وقفہ بڑھانا پڑتا ہے۔"
+    }
+  },
+  {
+    "generic": "Amoxicillin/Clavulanate",
+    "ddinter": "Amoxicillin",
+    "brands": [
+      "Augmentin",
+      "Calamox",
+      "Amoclav",
+      "Curam"
+    ],
+    "urdu": "اموکسیسلن کلاوولینیٹ",
+    "purposeEn": "Broad-spectrum antibiotic",
+    "purposeUr": "وسیع اثر والی اینٹی بائیوٹک",
+    "class": "antibiotic",
+    "allergyGroup": "penicillin",
+    "timing": "with_meal",
+    "missedRule": "antibiotic_fixed",
+    "course": true,
+    "interactionData": "ddinter",
+    "renal": {
+      "adjustBelow": 30,
+      "note": "Dose interval usually needs extending.",
+      "noteUr": "خوراک کا وقفہ بڑھانا پڑتا ہے۔"
+    },
+    "hepatic": {
+      "level": "caution",
+      "note": "Can occasionally affect the liver — report yellow eyes or dark urine.",
+      "noteUr": "کبھی جگر پر اثر ڈال سکتی ہے — آنکھیں پیلی ہوں تو بتائیں۔"
+    }
+  },
+  {
+    "generic": "Azithromycin",
+    "ddinter": "Azithromycin",
+    "brands": [
+      "Azomax",
+      "Azimax",
+      "Zithromax",
+      "Azicip",
+      "Azith"
+    ],
+    "urdu": "ایزیتھرومائسن",
+    "purposeEn": "Antibiotic for chest and throat infections",
+    "purposeUr": "سینے اور گلے کے انفیکشن کی اینٹی بائیوٹک",
+    "class": "antibiotic",
+    "allergyGroup": "macrolide",
+    "timing": "before_meal",
+    "missedRule": "antibiotic_fixed",
+    "course": true,
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Clarithromycin",
+    "ddinter": "Clarithromycin",
+    "brands": [
+      "Klaricid",
+      "Claritek",
+      "Cluvax"
+    ],
+    "urdu": "کلیریتھرومائسن",
+    "purposeEn": "Antibiotic",
+    "purposeUr": "اینٹی بائیوٹک",
+    "class": "antibiotic",
+    "allergyGroup": "macrolide",
+    "timing": "after_meal",
+    "missedRule": "antibiotic_fixed",
+    "course": true,
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Cefixime",
+    "ddinter": "Cefixime",
+    "brands": [
+      "Cefspan",
+      "Cefiget",
+      "Suprax",
+      "Cefim"
+    ],
+    "urdu": "سیفکسیم",
+    "purposeEn": "Antibiotic for infections",
+    "purposeUr": "انفیکشن کی اینٹی بائیوٹک",
+    "class": "antibiotic",
+    "allergyGroup": "cephalosporin",
+    "timing": "after_meal",
+    "missedRule": "antibiotic_fixed",
+    "course": true,
+    "interactionData": "ddinter",
+    "renal": {
+      "adjustBelow": 60,
+      "note": "Reduce the dose when kidney function is low.",
+      "noteUr": "گردے کمزور ہوں تو خوراک کم کریں۔"
+    }
+  },
+  {
+    "generic": "Cephradine",
+    "ddinter": "Cefradine",
+    "brands": [
+      "Velosef",
+      "Ceporex"
+    ],
+    "urdu": "سیفراڈین",
+    "purposeEn": "Antibiotic",
+    "purposeUr": "اینٹی بائیوٹک",
+    "class": "antibiotic",
+    "allergyGroup": "cephalosporin",
+    "timing": "before_meal",
+    "missedRule": "antibiotic_fixed",
+    "course": true,
+    "interactionData": "ddinter",
+    "renal": {
+      "adjustBelow": 50,
+      "note": "Reduce the dose when kidney function is low.",
+      "noteUr": "گردے کمزور ہوں تو خوراک کم کریں۔"
+    }
+  },
+  {
+    "generic": "Ceftriaxone",
+    "ddinter": "Ceftriaxone",
+    "brands": [
+      "Rocephin",
+      "Oframax",
+      "Cefaday"
+    ],
+    "urdu": "سیفٹرائیاکسون",
+    "purposeEn": "Injectable antibiotic",
+    "purposeUr": "ٹیکے والی اینٹی بائیوٹک",
+    "class": "antibiotic",
+    "allergyGroup": "cephalosporin",
+    "timing": "any",
+    "missedRule": "antibiotic_fixed",
+    "course": true,
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Ciprofloxacin",
+    "ddinter": "Ciprofloxacin",
+    "brands": [
+      "Ciproxin",
+      "Novidat",
+      "Cifran"
+    ],
+    "urdu": "سیپروفلوکساسن",
+    "purposeEn": "Antibiotic for urinary and gut infections",
+    "purposeUr": "پیشاب اور پیٹ کے انفیکشن کی اینٹی بائیوٹک",
+    "class": "antibiotic",
+    "allergyGroup": "quinolone",
+    "timing": "before_meal",
+    "missedRule": "antibiotic_fixed",
+    "course": true,
+    "interactionData": "ddinter",
+    "renal": {
+      "adjustBelow": 30,
+      "note": "Reduce the dose when kidney function is low.",
+      "noteUr": "گردے کمزور ہوں تو خوراک کم کریں۔"
+    }
+  },
+  {
+    "generic": "Levofloxacin",
+    "ddinter": "Levofloxacin",
+    "brands": [
+      "Leflox",
+      "Levaquin",
+      "Tavanic"
+    ],
+    "urdu": "لیووفلوکساسن",
+    "purposeEn": "Antibiotic",
+    "purposeUr": "اینٹی بائیوٹک",
+    "class": "antibiotic",
+    "allergyGroup": "quinolone",
+    "timing": "any",
+    "missedRule": "antibiotic_fixed",
+    "course": true,
+    "interactionData": "ddinter",
+    "renal": {
+      "adjustBelow": 50,
+      "note": "Dose interval usually needs extending.",
+      "noteUr": "خوراک کے وقفے بڑھانے پڑتے ہیں۔"
+    }
+  },
+  {
+    "generic": "Metronidazole",
+    "ddinter": "Metronidazole",
+    "brands": [
+      "Flagyl",
+      "Metrozine",
+      "Nidazole"
+    ],
+    "urdu": "میٹرونیڈازول",
+    "purposeEn": "Antibiotic for gut and dental infections",
+    "purposeUr": "پیٹ اور دانت کے انفیکشن کی دوا",
+    "class": "antibiotic",
+    "allergyGroup": "nitroimidazole",
+    "timing": "after_meal",
+    "missedRule": "antibiotic_fixed",
+    "course": true,
+    "avoidAlcohol": true,
+    "interactionData": "ddinter",
+    "hepatic": {
+      "level": "caution",
+      "note": "The dose is usually reduced in severe liver disease.",
+      "noteUr": "جگر کی شدید بیماری میں خوراک کم کی جاتی ہے۔"
+    }
+  },
+  {
+    "generic": "Doxycycline",
+    "ddinter": "Doxycycline",
+    "brands": [
+      "Vibramycin",
+      "Doxycin",
+      "Doxin"
+    ],
+    "urdu": "ڈوکسی سائیکلین",
+    "purposeEn": "Antibiotic",
+    "purposeUr": "اینٹی بائیوٹک",
+    "class": "antibiotic",
+    "allergyGroup": "tetracycline",
+    "timing": "after_meal",
+    "missedRule": "antibiotic_fixed",
+    "course": true,
+    "avoidDairy": true,
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Co-trimoxazole",
+    "ddinter": "Sulfamethoxazole",
+    "brands": [
+      "Septran",
+      "Bactrim",
+      "Trimol"
+    ],
+    "urdu": "کو ٹرائیموکسازول",
+    "purposeEn": "Antibiotic",
+    "purposeUr": "اینٹی بائیوٹک",
+    "class": "antibiotic",
+    "allergyGroup": "sulfonamide",
+    "timing": "after_meal",
+    "missedRule": "antibiotic_fixed",
+    "course": true,
+    "interactionData": "ddinter",
+    "renal": {
+      "avoidBelow": 15,
+      "adjustBelow": 30,
+      "note": "Avoid in severe kidney impairment.",
+      "noteUr": "گردوں کی شدید خرابی میں نہ لیں۔"
+    }
+  },
+  {
+    "generic": "Omeprazole",
+    "ddinter": "Omeprazole",
+    "brands": [
+      "Risek",
+      "Omez",
+      "Zoltar",
+      "Ulcap"
+    ],
+    "urdu": "اومیپرازول",
+    "purposeEn": "Reduces stomach acid",
+    "purposeUr": "معدے کی تیزابیت کم کرتا ہے",
+    "class": "ppi",
+    "allergyGroup": "ppi",
+    "timing": "before_meal",
+    "missedRule": "once_daily",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Esomeprazole",
+    "ddinter": "Esomeprazole",
+    "brands": [
+      "Nexum",
+      "Esso",
+      "Nexium"
+    ],
+    "urdu": "ایزومیپرازول",
+    "purposeEn": "Reduces stomach acid",
+    "purposeUr": "معدے کی تیزابیت کم کرتا ہے",
+    "class": "ppi",
+    "allergyGroup": "ppi",
+    "timing": "before_meal",
+    "missedRule": "once_daily",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Domperidone",
+    "ddinter": "Domperidone",
+    "brands": [
+      "Motilium",
+      "Domel",
+      "Gravinate-D"
+    ],
+    "urdu": "ڈومپیریڈون",
+    "purposeEn": "Nausea and vomiting",
+    "purposeUr": "متلی اور قے کے لیے",
+    "class": "antiemetic",
+    "allergyGroup": "domperidone",
+    "timing": "before_meal",
+    "missedRule": "prn",
+    "interactionData": "none"
+  },
+  {
+    "generic": "Ondansetron",
+    "ddinter": "Ondansetron",
+    "brands": [
+      "Onset",
+      "Zofran",
+      "Emset"
+    ],
+    "urdu": "اونڈانسیٹرون",
+    "purposeEn": "Prevents nausea and vomiting",
+    "purposeUr": "متلی اور قے روکتا ہے",
+    "class": "antiemetic",
+    "allergyGroup": "ondansetron",
+    "timing": "any",
+    "missedRule": "prn",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Metformin",
+    "ddinter": "Metformin",
+    "brands": [
+      "Glucophage",
+      "Neodipar",
+      "Metfor"
+    ],
+    "urdu": "میٹفارمن",
+    "purposeEn": "Controls blood sugar in diabetes",
+    "purposeUr": "ذیابیطس میں شوگر کنٹرول کرتا ہے",
+    "class": "antidiabetic",
+    "allergyGroup": "biguanide",
+    "timing": "with_meal",
+    "missedRule": "with_food_skip",
+    "interactionData": "ddinter",
+    "renal": {
+      "avoidBelow": 30,
+      "adjustBelow": 45,
+      "note": "Stop if kidney function falls below 30. Risk of lactic acidosis.",
+      "noteUr": "گردے کی کارکردگی 30 سے کم ہو تو بند کر دیں۔"
+    }
+  },
+  {
+    "generic": "Glimepiride",
+    "ddinter": "Glimepiride",
+    "brands": [
+      "Amaryl",
+      "Getryl",
+      "Glimet"
+    ],
+    "urdu": "گلیمی پیرائیڈ",
+    "purposeEn": "Lowers blood sugar",
+    "purposeUr": "شوگر کم کرتا ہے",
+    "class": "antidiabetic",
+    "allergyGroup": "sulfonylurea",
+    "timing": "before_meal",
+    "missedRule": "hypo_risk",
+    "interactionData": "ddinter",
+    "renal": {
+      "adjustBelow": 60,
+      "note": "Higher risk of low blood sugar — usually started at a lower dose.",
+      "noteUr": "شوگر گرنے کا خطرہ زیادہ — کم خوراک سے شروع کرتے ہیں۔"
+    }
+  },
+  {
+    "generic": "Gliclazide",
+    "ddinter": "Gliclazide",
+    "brands": [
+      "Diamicron",
+      "Glizid"
+    ],
+    "urdu": "گلیکلازائیڈ",
+    "purposeEn": "Lowers blood sugar",
+    "purposeUr": "شوگر کم کرتا ہے",
+    "class": "antidiabetic",
+    "allergyGroup": "sulfonylurea",
+    "timing": "before_meal",
+    "missedRule": "hypo_risk",
+    "interactionData": "none",
+    "renal": {
+      "adjustBelow": 60,
+      "note": "Higher risk of low blood sugar.",
+      "noteUr": "شوگر گرنے کا خطرہ زیادہ۔"
+    }
+  },
+  {
+    "generic": "Sitagliptin",
+    "ddinter": "Sitagliptin",
+    "brands": [
+      "Januvia",
+      "Sitaglu"
+    ],
+    "urdu": "سیٹاگلپٹن",
+    "purposeEn": "Controls blood sugar",
+    "purposeUr": "شوگر کنٹرول کرتا ہے",
+    "class": "antidiabetic",
+    "allergyGroup": "dpp4",
+    "timing": "any",
+    "missedRule": "once_daily",
+    "interactionData": "ddinter",
+    "renal": {
+      "adjustBelow": 45,
+      "note": "Dose is reduced as kidney function falls.",
+      "noteUr": "گردے کی کارکردگی کم ہو تو خوراک کم کی جاتی ہے۔"
+    }
+  },
+  {
+    "generic": "Amlodipine",
+    "ddinter": "Amlodipine",
+    "brands": [
+      "Norvasc",
+      "Amlodac",
+      "Amlopin"
+    ],
+    "urdu": "ایملوڈیپین",
+    "purposeEn": "Lowers blood pressure",
+    "purposeUr": "بلڈ پریشر کم کرتا ہے",
+    "class": "antihypertensive",
+    "allergyGroup": "ccb",
+    "timing": "any",
+    "missedRule": "once_daily",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Atenolol",
+    "ddinter": "Atenolol",
+    "brands": [
+      "Tenormin",
+      "Blokium"
+    ],
+    "urdu": "ایٹینولول",
+    "purposeEn": "Lowers blood pressure and heart rate",
+    "purposeUr": "بلڈ پریشر اور دل کی رفتار کم کرتا ہے",
+    "class": "betablocker",
+    "allergyGroup": "betablocker",
+    "timing": "any",
+    "missedRule": "no_double_bp",
+    "interactionData": "ddinter",
+    "renal": {
+      "adjustBelow": 35,
+      "note": "Cleared by the kidneys — the dose usually needs reducing.",
+      "noteUr": "گردوں سے خارج ہوتی ہے — خوراک کم کرنی پڑتی ہے۔"
+    }
+  },
+  {
+    "generic": "Bisoprolol",
+    "ddinter": "Bisoprolol",
+    "brands": [
+      "Concor",
+      "Bisocor"
+    ],
+    "urdu": "بائسوپرولول",
+    "purposeEn": "Heart and blood pressure",
+    "purposeUr": "دل اور بلڈ پریشر کے لیے",
+    "class": "betablocker",
+    "allergyGroup": "betablocker",
+    "timing": "morning",
+    "missedRule": "no_double_bp",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Propranolol",
+    "ddinter": "Propranolol",
+    "brands": [
+      "Inderal",
+      "Propanol"
+    ],
+    "urdu": "پروپرانولول",
+    "purposeEn": "Blood pressure, tremor and migraine",
+    "purposeUr": "بلڈ پریشر، کپکپی اور درد شقیقہ",
+    "class": "betablocker",
+    "allergyGroup": "betablocker",
+    "timing": "any",
+    "missedRule": "no_double_bp",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Lisinopril",
+    "ddinter": "Lisinopril",
+    "brands": [
+      "Zestril",
+      "Lisinid"
+    ],
+    "urdu": "لائسینوپرل",
+    "purposeEn": "Lowers blood pressure",
+    "purposeUr": "بلڈ پریشر کم کرتا ہے",
+    "class": "acei",
+    "allergyGroup": "acei",
+    "timing": "any",
+    "missedRule": "no_double_bp",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Enalapril",
+    "ddinter": "Enalapril",
+    "brands": [
+      "Renitec",
+      "Enam"
+    ],
+    "urdu": "اینالاپرل",
+    "purposeEn": "Lowers blood pressure",
+    "purposeUr": "بلڈ پریشر کم کرتا ہے",
+    "class": "acei",
+    "allergyGroup": "acei",
+    "timing": "any",
+    "missedRule": "no_double_bp",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Losartan",
+    "ddinter": "Losartan",
+    "brands": [
+      "Cozaar",
+      "Losar",
+      "Angitan"
+    ],
+    "urdu": "لوسارٹن",
+    "purposeEn": "Lowers blood pressure",
+    "purposeUr": "بلڈ پریشر کم کرتا ہے",
+    "class": "arb",
+    "allergyGroup": "arb",
+    "timing": "any",
+    "missedRule": "no_double_bp",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Telmisartan",
+    "ddinter": "Telmisartan",
+    "brands": [
+      "Micardis",
+      "Telmed",
+      "Tezloc"
+    ],
+    "urdu": "ٹیلمی سارٹن",
+    "purposeEn": "Lowers blood pressure",
+    "purposeUr": "بلڈ پریشر کم کرتا ہے",
+    "class": "arb",
+    "allergyGroup": "arb",
+    "timing": "any",
+    "missedRule": "no_double_bp",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Furosemide",
+    "ddinter": "Furosemide",
+    "brands": [
+      "Lasix",
+      "Frusemide"
+    ],
+    "urdu": "فیوروسیمائیڈ",
+    "purposeEn": "Removes excess water, for swelling",
+    "purposeUr": "جسم سے فالتو پانی نکالتا ہے",
+    "class": "diuretic",
+    "allergyGroup": "sulfonamide",
+    "timing": "morning",
+    "missedRule": "diuretic",
+    "interactionData": "ddinter",
+    "renal": {
+      "adjustBelow": 30,
+      "note": "Often needs a higher dose in kidney disease — only under medical advice.",
+      "noteUr": "گردوں کی بیماری میں خوراک بڑھانی پڑ سکتی ہے — ڈاکٹر کے مشورے سے۔"
+    }
+  },
+  {
+    "generic": "Atorvastatin",
+    "ddinter": "Atorvastatin",
+    "brands": [
+      "Lipitor",
+      "Atorva",
+      "Lipiget"
+    ],
+    "urdu": "ایٹورواسٹیٹن",
+    "purposeEn": "Lowers cholesterol",
+    "purposeUr": "کولیسٹرول کم کرتا ہے",
+    "class": "statin",
+    "allergyGroup": "statin",
+    "timing": "night",
+    "missedRule": "once_daily",
+    "avoidGrapefruit": true,
+    "interactionData": "ddinter",
+    "hepatic": {
+      "level": "caution",
+      "note": "Liver enzymes should be checked before and during treatment.",
+      "noteUr": "علاج سے پہلے اور دوران جگر کے ٹیسٹ ضروری ہیں۔"
+    }
+  },
+  {
+    "generic": "Rosuvastatin",
+    "ddinter": "Rosuvastatin",
+    "brands": [
+      "Crestor",
+      "Rosuget"
+    ],
+    "urdu": "روزوواسٹیٹن",
+    "purposeEn": "Lowers cholesterol",
+    "purposeUr": "کولیسٹرول کم کرتا ہے",
+    "class": "statin",
+    "allergyGroup": "statin",
+    "timing": "night",
+    "missedRule": "once_daily",
+    "interactionData": "ddinter",
+    "hepatic": {
+      "level": "caution",
+      "note": "Liver enzymes should be checked.",
+      "noteUr": "جگر کے ٹیسٹ ضروری ہیں۔"
+    }
+  },
+  {
+    "generic": "Clopidogrel",
+    "ddinter": "Clopidogrel",
+    "brands": [
+      "Plavix",
+      "Clopid",
+      "Ceruvin"
+    ],
+    "urdu": "کلوپیڈوگرل",
+    "purposeEn": "Prevents blood clots",
+    "purposeUr": "خون کے لوتھڑے روکتا ہے",
+    "class": "antiplatelet",
+    "allergyGroup": "antiplatelet",
+    "timing": "any",
+    "missedRule": "once_daily",
+    "bleedRisk": true,
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Warfarin",
+    "ddinter": "Warfarin",
+    "brands": [
+      "Coumadin",
+      "Warf"
+    ],
+    "urdu": "وارفرین",
+    "purposeEn": "Blood thinner",
+    "purposeUr": "خون پتلا کرنے کی دوا",
+    "class": "anticoagulant",
+    "allergyGroup": "anticoagulant",
+    "timing": "night",
+    "missedRule": "anticoagulant",
+    "bleedRisk": true,
+    "interactionData": "ddinter",
+    "hepatic": {
+      "level": "caution",
+      "note": "Liver disease raises bleeding risk — needs closer monitoring.",
+      "noteUr": "جگر کی بیماری میں خون بہنے کا خطرہ بڑھتا ہے۔"
+    }
+  },
+  {
+    "generic": "Cetirizine",
+    "ddinter": "Cetirizine",
+    "brands": [
+      "Zyrtec",
+      "Softin",
+      "Rigix",
+      "Cetrizet"
+    ],
+    "urdu": "سیٹریزین",
+    "purposeEn": "Allergy and itching",
+    "purposeUr": "الرجی اور خارش کے لیے",
+    "class": "antihistamine",
+    "allergyGroup": "antihistamine",
+    "timing": "night",
+    "missedRule": "prn",
+    "drowsy": true,
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Loratadine",
+    "ddinter": "Loratadine",
+    "brands": [
+      "Clarityne",
+      "Lorin"
+    ],
+    "urdu": "لوراٹاڈین",
+    "purposeEn": "Allergy relief",
+    "purposeUr": "الرجی کے لیے",
+    "class": "antihistamine",
+    "allergyGroup": "antihistamine",
+    "timing": "any",
+    "missedRule": "prn",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Fexofenadine",
+    "ddinter": "Fexofenadine",
+    "brands": [
+      "Telfast",
+      "Fexet",
+      "Allegra"
+    ],
+    "urdu": "فیکسوفیناڈین",
+    "purposeEn": "Allergy relief",
+    "purposeUr": "الرجی کے لیے",
+    "class": "antihistamine",
+    "allergyGroup": "antihistamine",
+    "timing": "any",
+    "missedRule": "prn",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Chlorpheniramine",
+    "ddinter": "Chlorpheniramine",
+    "brands": [
+      "Piriton",
+      "Avil",
+      "Cp"
+    ],
+    "urdu": "کلورفینیرامین",
+    "purposeEn": "Allergy and cold",
+    "purposeUr": "الرجی اور نزلہ زکام",
+    "class": "antihistamine",
+    "allergyGroup": "antihistamine",
+    "timing": "night",
+    "missedRule": "prn",
+    "drowsy": true,
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Salbutamol",
+    "ddinter": "Salbutamol",
+    "brands": [
+      "Ventolin",
+      "Salbutol",
+      "Asthalin"
+    ],
+    "urdu": "سالبوٹامول",
+    "purposeEn": "Opens airways in asthma",
+    "purposeUr": "دمہ میں سانس کی نالی کھولتا ہے",
+    "class": "bronchodilator",
+    "allergyGroup": "beta_agonist",
+    "timing": "any",
+    "missedRule": "inhaler_prn",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Montelukast",
+    "ddinter": "Montelukast",
+    "brands": [
+      "Singulair",
+      "Montiget",
+      "Monas"
+    ],
+    "urdu": "مونٹی لوکاسٹ",
+    "purposeEn": "Prevents asthma and allergy",
+    "purposeUr": "دمہ اور الرجی سے بچاؤ",
+    "class": "respiratory",
+    "allergyGroup": "montelukast",
+    "timing": "night",
+    "missedRule": "once_daily",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Prednisolone",
+    "ddinter": "Prednisolone",
+    "brands": [
+      "Deltacortril",
+      "Predone",
+      "Sterapred"
+    ],
+    "urdu": "پریڈنیسولون",
+    "purposeEn": "Reduces severe inflammation",
+    "purposeUr": "شدید سوزش کم کرتا ہے",
+    "class": "steroid",
+    "allergyGroup": "corticosteroid",
+    "timing": "morning",
+    "missedRule": "steroid_taper",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Dexamethasone",
+    "ddinter": "Dexamethasone",
+    "brands": [
+      "Decadron",
+      "Dexa"
+    ],
+    "urdu": "ڈیکسامیتھازون",
+    "purposeEn": "Strong anti-inflammatory",
+    "purposeUr": "طاقتور سوزش کم کرنے والی دوا",
+    "class": "steroid",
+    "allergyGroup": "corticosteroid",
+    "timing": "morning",
+    "missedRule": "steroid_taper",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Levothyroxine",
+    "ddinter": "Levothyroxine",
+    "brands": [
+      "Thyrox",
+      "Eltroxin",
+      "Thyronorm"
+    ],
+    "urdu": "لیووتھائیروکسین",
+    "purposeEn": "Thyroid hormone replacement",
+    "purposeUr": "تھائیرائیڈ ہارمون کی دوا",
+    "class": "hormone",
+    "allergyGroup": "thyroid",
+    "timing": "empty_stomach",
+    "missedRule": "levothyroxine",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Alprazolam",
+    "ddinter": "Alprazolam",
+    "brands": [
+      "Xanax",
+      "Alp",
+      "Alprax"
+    ],
+    "urdu": "الپرازولام",
+    "purposeEn": "Anxiety and panic",
+    "purposeUr": "گھبراہٹ اور بے چینی کے لیے",
+    "class": "benzodiazepine",
+    "allergyGroup": "benzodiazepine",
+    "timing": "night",
+    "missedRule": "sedative",
+    "drowsy": true,
+    "noDriving": true,
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Clonazepam",
+    "ddinter": "Clonazepam",
+    "brands": [
+      "Rivotril",
+      "Clonatril"
+    ],
+    "urdu": "کلونازیپام",
+    "purposeEn": "Anxiety and seizures",
+    "purposeUr": "بے چینی اور مرگی کے لیے",
+    "class": "benzodiazepine",
+    "allergyGroup": "benzodiazepine",
+    "timing": "night",
+    "missedRule": "sedative",
+    "drowsy": true,
+    "noDriving": true,
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Escitalopram",
+    "ddinter": "Escitalopram",
+    "brands": [
+      "Nexito",
+      "Lexapro",
+      "Escita"
+    ],
+    "urdu": "ایسسیٹالوپرام",
+    "purposeEn": "Depression and anxiety",
+    "purposeUr": "ڈپریشن اور بے چینی کے لیے",
+    "class": "ssri",
+    "allergyGroup": "ssri",
+    "timing": "morning",
+    "missedRule": "ssri",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Fluoxetine",
+    "ddinter": "Fluoxetine",
+    "brands": [
+      "Prozac",
+      "Depex",
+      "Flux"
+    ],
+    "urdu": "فلوکسیٹین",
+    "purposeEn": "Depression",
+    "purposeUr": "ڈپریشن کے لیے",
+    "class": "ssri",
+    "allergyGroup": "ssri",
+    "timing": "morning",
+    "missedRule": "ssri",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Sertraline",
+    "ddinter": "Sertraline",
+    "brands": [
+      "Zoloft",
+      "Sertra"
+    ],
+    "urdu": "سرٹرالین",
+    "purposeEn": "Depression and anxiety",
+    "purposeUr": "ڈپریشن اور بے چینی",
+    "class": "ssri",
+    "allergyGroup": "ssri",
+    "timing": "morning",
+    "missedRule": "ssri",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Carbamazepine",
+    "ddinter": "Carbamazepine",
+    "brands": [
+      "Tegral",
+      "Tegretol"
+    ],
+    "urdu": "کاربامازیپین",
+    "purposeEn": "Seizures and nerve pain",
+    "purposeUr": "مرگی اور اعصابی درد",
+    "class": "anticonvulsant",
+    "allergyGroup": "anticonvulsant",
+    "timing": "after_meal",
+    "missedRule": "anticonvulsant",
+    "interactionData": "ddinter",
+    "hepatic": {
+      "level": "caution",
+      "note": "Liver function should be monitored.",
+      "noteUr": "جگر کی کارکردگی کی نگرانی ضروری ہے۔"
+    }
+  },
+  {
+    "generic": "Valproate",
+    "ddinter": "Valproic acid",
+    "brands": [
+      "Epival",
+      "Valpro",
+      "Depakine"
+    ],
+    "urdu": "ویلپروایٹ",
+    "purposeEn": "Seizures",
+    "purposeUr": "مرگی کے لیے",
+    "class": "anticonvulsant",
+    "allergyGroup": "anticonvulsant",
+    "timing": "after_meal",
+    "missedRule": "anticonvulsant",
+    "pregnancyRisk": "high",
+    "interactionData": "ddinter",
+    "hepatic": {
+      "level": "avoid",
+      "note": "Can cause serious liver injury — avoid in active liver disease.",
+      "noteUr": "جگر کو شدید نقصان پہنچا سکتی ہے۔"
+    }
+  },
+  {
+    "generic": "Gabapentin",
+    "ddinter": "Gabapentin",
+    "brands": [
+      "Neurontin",
+      "Gabapin"
+    ],
+    "urdu": "گاباپینٹن",
+    "purposeEn": "Nerve pain",
+    "purposeUr": "اعصابی درد کے لیے",
+    "class": "anticonvulsant",
+    "allergyGroup": "gabapentinoid",
+    "timing": "any",
+    "missedRule": "anticonvulsant",
+    "drowsy": true,
+    "interactionData": "ddinter",
+    "renal": {
+      "adjustBelow": 60,
+      "note": "Needs a substantially lower dose — build-up causes heavy drowsiness.",
+      "noteUr": "خوراک کافی کم کرنی پڑتی ہے، ورنہ شدید غنودگی ہوتی ہے۔"
+    }
+  },
+  {
+    "generic": "Pregabalin",
+    "ddinter": "Pregabalin",
+    "brands": [
+      "Lyrica",
+      "Pregalin"
+    ],
+    "urdu": "پری گابالن",
+    "purposeEn": "Nerve pain",
+    "purposeUr": "اعصابی درد کے لیے",
+    "class": "anticonvulsant",
+    "allergyGroup": "gabapentinoid",
+    "timing": "any",
+    "missedRule": "anticonvulsant",
+    "drowsy": true,
+    "interactionData": "ddinter",
+    "renal": {
+      "adjustBelow": 60,
+      "note": "Needs a substantially lower dose.",
+      "noteUr": "خوراک کافی کم کرنی پڑتی ہے۔"
+    }
+  },
+  {
+    "generic": "Ferrous Sulfate",
+    "ddinter": "Ferrous sulfate anhydrous",
+    "brands": [
+      "Sangobion",
+      "Ferotab",
+      "Fefol"
+    ],
+    "urdu": "فولاد",
+    "purposeEn": "Iron supplement for anaemia",
+    "purposeUr": "خون کی کمی کے لیے فولاد",
+    "class": "supplement",
+    "allergyGroup": "iron",
+    "timing": "before_meal",
+    "missedRule": "supplement",
+    "avoidDairy": true,
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Folic Acid",
+    "ddinter": "Folic acid",
+    "brands": [
+      "Folic",
+      "Fefol"
+    ],
+    "urdu": "فولک ایسڈ",
+    "purposeEn": "Vitamin for blood and pregnancy",
+    "purposeUr": "خون اور حمل کے لیے وٹامن",
+    "class": "supplement",
+    "allergyGroup": "vitamin",
+    "timing": "any",
+    "missedRule": "supplement",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Calcium Carbonate",
+    "ddinter": "Calcium carbonate",
+    "brands": [
+      "Calcit",
+      "Qalsan",
+      "Caltrate",
+      "Calcite"
+    ],
+    "urdu": "کیلشیم",
+    "purposeEn": "Calcium supplement for bones",
+    "purposeUr": "ہڈیوں کے لیے کیلشیم",
+    "class": "supplement",
+    "allergyGroup": "calcium",
+    "timing": "after_meal",
+    "missedRule": "supplement",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Cholecalciferol",
+    "ddinter": "Cholecalciferol",
+    "brands": [
+      "Sunny D",
+      "Indrop D",
+      "Vitamin D3"
+    ],
+    "urdu": "وٹامن ڈی",
+    "purposeEn": "Vitamin D supplement",
+    "purposeUr": "وٹامن ڈی کی کمی کے لیے",
+    "class": "supplement",
+    "allergyGroup": "vitamin",
+    "timing": "after_meal",
+    "missedRule": "supplement",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Insulin Glargine",
+    "ddinter": "Insulin glargine",
+    "brands": [
+      "Lantus",
+      "Basalog"
+    ],
+    "urdu": "انسولین گلارجین",
+    "purposeEn": "Long-acting insulin",
+    "purposeUr": "لمبے وقت تک چلنے والی انسولین",
+    "class": "insulin",
+    "allergyGroup": "insulin",
+    "timing": "night",
+    "missedRule": "insulin",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Hydrochlorothiazide",
+    "ddinter": "Hydrochlorothiazide",
+    "brands": [
+      "Hydrozide",
+      "Esidrex"
+    ],
+    "urdu": "ہائیڈروکلوروتھیازائیڈ",
+    "purposeEn": "Blood pressure and water retention",
+    "purposeUr": "بلڈ پریشر اور پانی کی زیادتی",
+    "class": "diuretic",
+    "allergyGroup": "sulfonamide",
+    "timing": "morning",
+    "missedRule": "diuretic",
+    "interactionData": "ddinter",
+    "renal": {
+      "avoidBelow": 30,
+      "note": "Stops working well below this level.",
+      "noteUr": "اس سطح سے نیچے یہ دوا اثر نہیں کرتی۔"
+    }
+  },
+  {
+    "generic": "Ranitidine",
+    "ddinter": "Ranitidine",
+    "brands": [
+      "Zantac",
+      "Ranidin",
+      "Peptidin"
+    ],
+    "urdu": "رینیٹیڈین",
+    "purposeEn": "Reduces stomach acid",
+    "purposeUr": "معدے کی تیزابیت کم کرتا ہے",
+    "class": "h2blocker",
+    "allergyGroup": "h2blocker",
+    "timing": "before_meal",
+    "missedRule": "prn",
+    "interactionData": "ddinter",
+    "renal": {
+      "adjustBelow": 50,
+      "note": "Reduce the dose when kidney function is low.",
+      "noteUr": "گردے کمزور ہوں تو خوراک کم کریں۔"
+    }
+  },
+  {
+    "generic": "Loperamide",
+    "ddinter": "Loperamide",
+    "brands": [
+      "Imodium",
+      "Lopamide"
+    ],
+    "urdu": "لوپیرامائیڈ",
+    "purposeEn": "Stops diarrhoea",
+    "purposeUr": "دست روکتا ہے",
+    "class": "antidiarrheal",
+    "allergyGroup": "loperamide",
+    "timing": "any",
+    "missedRule": "prn",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Hyoscine Butylbromide",
+    "ddinter": "Scopolamine",
+    "brands": [
+      "Buscopan",
+      "Hyocimax"
+    ],
+    "urdu": "ہائیوسین",
+    "purposeEn": "Stomach cramps and spasm",
+    "purposeUr": "پیٹ کے مروڑ اور درد",
+    "class": "antispasmodic",
+    "allergyGroup": "anticholinergic",
+    "timing": "any",
+    "missedRule": "prn",
+    "interactionData": "ddinter"
+  },
+  {
+    "generic": "Mirogabalin",
+    "ddinter": "Mirogabalin",
+    "brands": [
+      "Valmera"
+    ],
+    "urdu": "میروگابالین",
+    "purposeEn": "Treatment of neuropathic pain in adults",
+    "purposeUr": "بالغوں میں اعصابی درد کے علاج کے لیے",
+    "class": "neurology",
+    "allergyGroup": "mirogabalin",
+    "timing": "any",
+    "missedRule": "once_daily",
+    "interactionData": "none",
+    "renal": {
+      "avoidBelow": 15,
+      "adjustBelow": 60,
+      "note": "Mirogabalin exposure increases when kidney function is reduced. Dose and dosing interval may need adjustment based on renal function.",
+      "noteUr": "گردوں کی کارکردگی کم ہونے پر دوا کی مقدار بڑھ سکتی ہے، اس لیے خوراک اور وقفہ گردوں کی کارکردگی کے مطابق تبدیل کرنا پڑ سکتا ہے۔"
+    },
+    "drowsy": true,
+    "noDriving": true
+  },
+  {
+    "generic": "Zinc Sulfate",
+    "ddinter": "Zinc sulfate",
+    "brands": [
+      "Zincat",
+      "Zincovit"
+    ],
+    "urdu": "زنک سلفیٹ",
+    "purposeEn": "Zinc supplement",
+    "purposeUr": "زنک کی کمی کے لیے سپلیمنٹ",
+    "class": "supplement",
+    "allergyGroup": "zinc",
+    "timing": "after_meal",
+    "missedRule": "supplement",
+    "interactionData": "none"
+  },
+  {
+    "generic": "Methylcobalamin",
+    "ddinter": "Methylcobalamin",
+    "brands": [
+      "Cobolmin SL",
+      "Cobolmin"
+    ],
+    "urdu": "میتھائل کوبالامن",
+    "purposeEn": "Vitamin B12 replacement / supplementation",
+    "purposeUr": "وٹامن B12 کی کمی پوری کرنے کے لیے",
+    "class": "vitamin",
+    "allergyGroup": "methylcobalamin",
+    "timing": "any",
+    "missedRule": "prn",
+    "interactionData": "none"
+  },
+  {
+    "generic": "Orphenadrine + Paracetamol",
+    "ddinter": "Orphenadrine + Paracetamol",
+    "brands": [
+      "Wilgesic",
+      "Wilgesic Forte"
+    ],
+    "urdu": "اورفینادرین + پیراسیٹامول",
+    "purposeEn": "Muscle pain, spasm and associated pain relief",
+    "purposeUr": "پٹھوں کے درد اور کھنچاؤ سے متعلق درد کے لیے",
+    "class": "analgesic_combo",
+    "allergyGroup": "paracetamol",
+    "timing": "after_meal",
+    "missedRule": "prn",
+    "interactionData": "none",
+    "components": [
+      "Paracetamol",
+      "Orphenadrine Citrate"
+    ]
+  }
+]

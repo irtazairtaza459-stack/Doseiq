@@ -1,0 +1,13 @@
+{
+ "question": "Can open OCR read Pakistani doctors' handwriting?",
+ "dataset": "86 labelled samples, 30 doctors, Nawabshah — 50 resolve to catalogue drugs",
+ "attempts": [
+  { "method": "Tesseract 5, default page segmentation", "accuracy": 0.06, "note": "3/50 correct" },
+  { "method": "Tesseract 5, PSM 7 (single line)", "accuracy": 0.10, "note": "2/20 on a subset" },
+  { "method": "Tesseract 5, PSM 8 (single word)", "accuracy": 0.05, "note": "1/20 on a subset" },
+  { "method": "Tesseract 5, PSM 13 (raw line)", "accuracy": 0.05, "note": "1/20 on a subset" },
+  { "method": "TrOCR base handwritten (Xenova, q8)", "accuracy": 0.00, "note": "0/15. Trained on IAM prose; hallucinates fluent English phrases instead of drug names" }
+ ],
+ "conclusion": "No off-the-shelf open OCR reads this handwriting. Printed slips work perfectly (100%). Closing the handwriting gap needs either a model fine-tuned on this dataset, or a vision-language model API.",
+ "mitigation": "Every scanned line is confirmed by the patient with its confidence shown; typing a brand name is a first-class path and matches reliably."
+}

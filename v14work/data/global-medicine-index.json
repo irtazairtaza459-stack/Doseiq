@@ -1,0 +1,990 @@
+[
+  {
+    "generic": "Doxycycline Monohydrate",
+    "brand": "Adoxa",
+    "strength": "100 mg",
+    "dosageForm": "Oral Tablet",
+    "pack": "Adoxa Pak 2/100",
+    "rxcui": "795712",
+    "aliases": [
+      "Adoxa",
+      "Adoxa Pak",
+      "Adoxa Pak 2/100",
+      "Adoxa 100",
+      "doxycycline monohydrate 100 mg"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-09-30T00:00:00.000Z"
+  },
+  {
+    "generic": "acetaminophen 32 MG/ML Oral Solution [Panadol]",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "1095636",
+    "aliases": [
+      "acetaminophen 32 MG/ML Oral Solution [Panadol]",
+      "Panadol 32 MG/ML Oral Solution",
+      "Panadol Children's 80 MG in 2.5 mL Oral Solution"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:23:08.307Z"
+  },
+  {
+    "generic": "acetaminophen 500 MG Oral Tablet [Panadol]",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "200977",
+    "aliases": [
+      "acetaminophen 500 MG Oral Tablet [Panadol]",
+      "Panadol 500 MG Oral Tablet",
+      "Panadol Extra Strength 500 MG Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:23:08.308Z"
+  },
+  {
+    "generic": "{100 (acetaminophen 250 MG / aspirin 250 MG / caffeine 65 MG Oral Tablet [Excedrin]) / 24 (acetaminophen 250 MG / aspirin 250 MG / diphenhydramine citrate 38 MG Oral Tablet [Excedrin PM Triple Action]) } Pack [Excedrin PM Triple Action Caplets and Excedrin Extra Strength Pain Reliever]",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "2047428",
+    "aliases": [
+      "{100 (acetaminophen 250 MG / aspirin 250 MG / caffeine 65 MG Oral Tablet [Excedrin]) / 24 (acetaminophen 250 MG / aspirin 250 MG / diphenhydramine citrate 38 MG Oral Tablet [Excedrin PM Triple Action]) } Pack [Excedrin PM Triple Action Caplets and Excedrin Extra Strength Pain Reliever]",
+      "Excedrin PM Triple Action Caplets and Excedrin Extra Strength Pain Reliever Kit"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:31:49.391Z"
+  },
+  {
+    "generic": "{1 (acetaminophen 500 MG / chlorpheniramine maleate 2 MG / phenylephrine hydrochloride 5 MG Oral Tablet) / 1 (acetaminophen 500 MG / phenylephrine hydrochloride 5 MG Oral Tablet) } Pack",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "1101555",
+    "aliases": [
+      "{1 (acetaminophen 500 MG / chlorpheniramine maleate 2 MG / phenylephrine hydrochloride 5 MG Oral Tablet) / 1 (acetaminophen 500 MG / phenylephrine hydrochloride 5 MG Oral Tablet) } Pack",
+      "1 daytime (acetaminophen 500 MG / phenylephrine HCl 5 MG Oral Tablet) / 1 nighttime (acetaminophen 500 MG / chlorpheniramine maleate 2 MG / phenylephrine HCl 5 MG Oral Tablet) Pack"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:31:49.391Z"
+  },
+  {
+    "generic": "{1 (acetaminophen 33.3 MG/ML / dextromethorphan hydrobromide 1 MG/ML / doxylamine succinate 0.417 MG/ML Oral Solution) / 1 (acetaminophen 33.3 MG/ML / dextromethorphan hydrobromide 1 MG/ML Oral Solution) } Pack",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "1242575",
+    "aliases": [
+      "{1 (acetaminophen 33.3 MG/ML / dextromethorphan hydrobromide 1 MG/ML / doxylamine succinate 0.417 MG/ML Oral Solution) / 1 (acetaminophen 33.3 MG/ML / dextromethorphan hydrobromide 1 MG/ML Oral Solution) } Pack",
+      "1 nighttime (acetaminophen 500 MG / dextromethorphan hydrobromide 15 MG / doxylamine succinate 6.25 MG per 15 ML Oral Solution) / 1 daytime (acetaminophen 500 MG / dextromethorphan hydrobromide 15 MG per 15 ML Oral Solution) Pack",
+      "1 nighttime (acetaminophen 500 MG / dextromethorphan hydrobromide 15 MG / doxylamine succinate 6.25 MG in 15 mL Oral Solution) / 1 daytime (acetaminophen 500 MG / dextromethorphan hydrobromide 15 MG in 15 mL Oral Solution) Pack"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:31:49.391Z"
+  },
+  {
+    "generic": "{1 (acetaminophen 500 MG / chlorpheniramine maleate 2 MG / dextromethorphan hydrobromide 15 MG Oral Tablet) / 1 (dextromethorphan hydrobromide 10 MG / guaifenesin 200 MG Oral Capsule) } Pack",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "1250983",
+    "aliases": [
+      "{1 (acetaminophen 500 MG / chlorpheniramine maleate 2 MG / dextromethorphan hydrobromide 15 MG Oral Tablet) / 1 (dextromethorphan hydrobromide 10 MG / guaifenesin 200 MG Oral Capsule) } Pack",
+      "1 daytime (dextromethorphan HBr 10 MG / guaiFENesin 200 MG Oral Capsule) / 1 nighttime (acetaminophen 500 MG / chlorpheniramine maleate 2 MG / dextromethorphan HBr 15 MG Oral Tablet) Pack"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:31:49.391Z"
+  },
+  {
+    "generic": "{1 (acetaminophen 32.5 MG/ML / dextromethorphan hydrobromide 1 MG/ML / guaifenesin 20 MG/ML / phenylephrine hydrochloride 0.5 MG/ML Oral Solution) / 1 (acetaminophen 32.5 MG/ML / diphenhydramine hydrochloride 1.25 MG/ML / phenylephrine hydrochloride 0.5 MG/ML Oral Solution) } Pack",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "1424850",
+    "aliases": [
+      "{1 (acetaminophen 32.5 MG/ML / dextromethorphan hydrobromide 1 MG/ML / guaifenesin 20 MG/ML / phenylephrine hydrochloride 0.5 MG/ML Oral Solution) / 1 (acetaminophen 32.5 MG/ML / diphenhydramine hydrochloride 1.25 MG/ML / phenylephrine hydrochloride 0.5 MG/ML Oral Solution) } Pack",
+      "1 daytime (acetaminophen 650 MG / dextromethorphan HBr 20 MG / guaifenesin 400 MG / phenylephrine HCl 10 MG per 20 ML Oral Solution) / 1 nighttime (acetaminophen 650 MG / diphenhydramine HCl 25 MG / phenylephrine HCl 10 MG per 20 ML Oral Solution) Pack",
+      "1 daytime (acetaminophen 650 MG / dextromethorphan HBr 20 MG / guaiFENesin 400 MG / phenylephrine HCl 10 MG in 20 mL Oral Solution) / 1 nighttime (acetaminophen 650 MG / diphenhydrAMINE HCl 25 MG / phenylephrine HCl 10 MG in 20 mL Oral Solution) Pack"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:31:49.391Z"
+  },
+  {
+    "generic": "{1 (acetaminophen 650 MG / dextromethorphan hydrobromide 20 MG / phenylephrine hydrochloride 10 MG Granules for Oral Solution) / 1 (acetaminophen 650 MG / diphenhydramine hydrochloride 25 MG / phenylephrine hydrochloride 10 MG Granules for Oral Solution) } Pack",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "1428880",
+    "aliases": [
+      "{1 (acetaminophen 650 MG / dextromethorphan hydrobromide 20 MG / phenylephrine hydrochloride 10 MG Granules for Oral Solution) / 1 (acetaminophen 650 MG / diphenhydramine hydrochloride 25 MG / phenylephrine hydrochloride 10 MG Granules for Oral Solution) } Pack",
+      "1 daytime (acetaminophen 650 MG / dextromethorphan HBr 20 MG / phenylephrine HCl 10 MG Packets for Oral Solution) / 1 nighttime (acetaminophen 650 MG / diphenhydramine HCl 25 MG / phenylephrine HCl 10 MG Packets for Oral Solution) Pack",
+      "1 daytime (acetaminophen 650 MG / dextromethorphan HBr 20 MG / phenylephrine HCl 10 MG Packets for Oral Solution) / 1 nighttime (acetaminophen 650 MG / diphenhydrAMINE HCl 25 MG / phenylephrine HCl 10 MG Packets for Oral Solution) Pack"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:31:49.391Z"
+  },
+  {
+    "generic": "{1 (acetaminophen 325 MG / dextromethorphan hydrobromide 10 MG / doxylamine succinate 6.25 MG Oral Capsule) / 1 (acetaminophen 325 MG / dextromethorphan hydrobromide 10 MG / phenylephrine hydrochloride 5 MG Oral Capsule) } Pack",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "1648203",
+    "aliases": [
+      "{1 (acetaminophen 325 MG / dextromethorphan hydrobromide 10 MG / doxylamine succinate 6.25 MG Oral Capsule) / 1 (acetaminophen 325 MG / dextromethorphan hydrobromide 10 MG / phenylephrine hydrochloride 5 MG Oral Capsule) } Pack",
+      "1 daytime (acetaminophen 325 MG / dextromethorphan hydrobromide 10 MG / phenylephrine hydrochloride 5 MG Oral Capsule) / 1 nighttime (acetaminophen 325 MG / dextromethorphan hydrobromide 10 MG / doxylamine succinate 6.25 MG Oral Capsule) Pack"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:31:49.392Z"
+  },
+  {
+    "generic": "{1 (acetaminophen 21.7 MG/ML / dextromethorphan hydrobromide 0.667 MG/ML / phenylephrine hydrochloride 0.333 MG/ML Oral Solution) / 1 (acetaminophen 21.7 MG/ML / diphenhydramine hydrochloride 0.833 MG/ML / phenylephrine hydrochloride 0.333 MG/ML Oral Solution) } Pack",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "1803669",
+    "aliases": [
+      "{1 (acetaminophen 21.7 MG/ML / dextromethorphan hydrobromide 0.667 MG/ML / phenylephrine hydrochloride 0.333 MG/ML Oral Solution) / 1 (acetaminophen 21.7 MG/ML / diphenhydramine hydrochloride 0.833 MG/ML / phenylephrine hydrochloride 0.333 MG/ML Oral Solution) } Pack",
+      "1 daytime (acetaminophen 650 MG / dextromethorphan HBr 20 MG / phenylephrine HCl 10 MG per 30 ML Oral Solution) / 1 nighttime (acetaminophen 650 MG / diphenhydramine HCl 25 MG / phenylephrine HCl 10 MG per 30 ML Oral Solution) Pack",
+      "1 daytime (acetaminophen 650 MG / dextromethorphan HBr 20 MG / phenylephrine HCl 10 MG in 30 mL Oral Solution) / 1 nighttime (acetaminophen 650 MG / diphenhydrAMINE HCl 25 MG / phenylephrine HCl 10 MG in 30 mL Oral Solution) Pack"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:31:49.392Z"
+  },
+  {
+    "generic": "{1 (acetaminophen 500 MG / dextromethorphan hydrobromide 20 MG / guaifenesin 400 MG / phenylephrine hydrochloride 10 MG Powder for Oral Solution) / 1 (acetaminophen 650 MG / dextromethorphan hydrobromide 20 MG / doxylamine succinate 12.5 MG / phenylephrine hydrochloride 10 MG Powder for Oral Solution) } Pack",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "1804384",
+    "aliases": [
+      "{1 (acetaminophen 500 MG / dextromethorphan hydrobromide 20 MG / guaifenesin 400 MG / phenylephrine hydrochloride 10 MG Powder for Oral Solution) / 1 (acetaminophen 650 MG / dextromethorphan hydrobromide 20 MG / doxylamine succinate 12.5 MG / phenylephrine hydrochloride 10 MG Powder for Oral Solution) } Pack",
+      "1 daytime (acetaminophen 500 MG / dextromethorphan HBr 20 MG / guaifenesin 400 MG / phenylephrine HCl 10 MG Packet for Oral Solution) / 1 nighttime (acetaminophen 650 MG / dextromethorphan HBr 20 MG / doxylamine succinate 12.5 MG / phenylephrine HCl 10 MG Packet for Oral Solution) Pack",
+      "1 daytime (acetaminophen 500 MG / dextromethorphan HBr 20 MG / guaiFENesin 400 MG / phenylephrine HCl 10 MG Packet for Oral Solution) / 1 nighttime (acetaminophen 650 MG / dextromethorphan HBr 20 MG / doxylamine succinate 12.5 MG / phenylephrine HCl 10 MG Packet for Oral Solution) Pack"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:31:49.392Z"
+  },
+  {
+    "generic": "{1 (acetaminophen 250 MG / dextromethorphan hydrobromide 10 MG / guaifenesin 200 MG / phenylephrine hydrochloride 5 MG Oral Capsule) / 1 (acetaminophen 325 MG / dextromethorphan hydrobromide 10 MG / doxylamine succinate 6.25 MG / phenylephrine hydrochloride 5 MG Oral Capsule) } Pack",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "1927849",
+    "aliases": [
+      "{1 (acetaminophen 250 MG / dextromethorphan hydrobromide 10 MG / guaifenesin 200 MG / phenylephrine hydrochloride 5 MG Oral Capsule) / 1 (acetaminophen 325 MG / dextromethorphan hydrobromide 10 MG / doxylamine succinate 6.25 MG / phenylephrine hydrochloride 5 MG Oral Capsule) } Pack",
+      "1 daytime (acetaminophen 250 MG / dextromethorphan hydrobromide 10 MG / guaifenesin 200 MG / phenylephrine hydrochloride 5 MG Oral Capsule) / 1 nighttime (acetaminophen 325 MG / dextromethorphan hydrobromide 10 MG / doxylamine succinate 6.25 MG / phenylephrine hydrochloride 5 MG Oral Capsule) Pack",
+      "1 daytime (acetaminophen 250 MG / dextromethorphan HBr 10 MG / guaiFENesin 200 MG / phenylephrine HCl 5 MG Oral Capsule) / 1 nighttime (acetaminophen 325 MG / dextromethorphan HBr 10 MG / doxylamine succinate 6.25 MG / phenylephrine HCl 5 MG Oral Capsule) Pack"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:31:49.392Z"
+  },
+  {
+    "generic": "{100 (acetaminophen 250 MG / aspirin 250 MG / caffeine 65 MG Oral Tablet) / 24 (acetaminophen 250 MG / aspirin 250 MG / diphenhydramine citrate 38 MG Oral Tablet) } Pack",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "2047427",
+    "aliases": [
+      "{100 (acetaminophen 250 MG / aspirin 250 MG / caffeine 65 MG Oral Tablet) / 24 (acetaminophen 250 MG / aspirin 250 MG / diphenhydramine citrate 38 MG Oral Tablet) } Pack",
+      "100 daytime (acetaminophen 250 MG / aspirin 250 MG / caffeine 65 MG Oral Tablet) / 24 nighttime (acetaminophen 250 MG / aspirin 250 MG / diphenhydramine citrate 38 MG Oral Tablet) Kit",
+      "100 daytime (acetaminophen 250 MG / aspirin 250 MG / caffeine 65 MG Oral Tablet) / 24 nighttime (acetaminophen 250 MG / aspirin 250 MG / diphenhydrAMINE citrate 38 MG Oral Tablet) Kit"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:31:49.392Z"
+  },
+  {
+    "generic": "{1 (acetaminophen 32.5 MG/ML / dextromethorphan hydrobromide 1 MG/ML / triprolidine hydrochloride 0.125 MG/ML Oral Solution) / 1 (dextromethorphan hydrobromide 1 MG/ML / guaifenesin 20 MG/ML Oral Solution) } Pack",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "2287760",
+    "aliases": [
+      "{1 (acetaminophen 32.5 MG/ML / dextromethorphan hydrobromide 1 MG/ML / triprolidine hydrochloride 0.125 MG/ML Oral Solution) / 1 (dextromethorphan hydrobromide 1 MG/ML / guaifenesin 20 MG/ML Oral Solution) } Pack",
+      "1 daytime (dextromethorphan HBr 20 MG / guaifenesin 400 MG per 20 ML Oral Solution) / 1 nighttime (acetaminophen 650 MG / dextromethorphan HBr 20 MG / triprolidine HCl 2.5 MG per 20 ML Oral Solution) Pack",
+      "1 daytime (dextromethorphan HBr 20 MG / guaiFENesin 400 MG in 20 mL Oral Solution) / 1 nighttime (acetaminophen 650 MG / dextromethorphan HBr 20 MG / triprolidine HCl 2.5 MG in 20 mL Oral Solution) Pack"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:31:49.392Z"
+  },
+  {
+    "generic": "{1 (acetaminophen 32.5 MG/ML / dextromethorphan hydrobromide 1 MG/ML / phenylephrine hydrochloride 0.5 MG/ML / triprolidine hydrochloride 0.125 MG/ML Oral Solution) / 1 (dextromethorphan hydrobromide 1 MG/ML / guaifenesin 20 MG/ML / phenylephrine hydrochloride 0.5 MG/ML Oral Solution) } Pack",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "2288826",
+    "aliases": [
+      "{1 (acetaminophen 32.5 MG/ML / dextromethorphan hydrobromide 1 MG/ML / phenylephrine hydrochloride 0.5 MG/ML / triprolidine hydrochloride 0.125 MG/ML Oral Solution) / 1 (dextromethorphan hydrobromide 1 MG/ML / guaifenesin 20 MG/ML / phenylephrine hydrochloride 0.5 MG/ML Oral Solution) } Pack",
+      "1 daytime (dextromethorphan HBr 20 MG / guaifenesin 400 MG / phenylephrine HCl 10 MG per 20 ML Oral Solution) / 1 nighttime (acetaminophen 650 MG / dextromethorphan HBr 20 MG / phenylephrine HCl 10 MG / triprolidine HCl 2.5 MG per 20 ML Oral Solution) Pack",
+      "1 daytime (dextromethorphan HBr 20 MG / guaiFENesin 400 MG / phenylephrine HCl 10 MG in 20 mL Oral Solution) / 1 nighttime (acetaminophen 650 MG / dextromethorphan HBr 20 MG / phenylephrine HCl 10 MG / triprolidine HCl 2.5 MG in 20 mL Oral Solution) Pack"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:31:49.392Z"
+  },
+  {
+    "generic": "{1 (acetaminophen 32.5 MG/ML / dextromethorphan hydrobromide 1 MG/ML / triprolidine hydrochloride 0.125 MG/ML Oral Solution) / 1 (dextromethorphan hydrobromide 1 MG/ML / guaifenesin 20 MG/ML / phenylephrine hydrochloride 0.5 MG/ML Oral Solution) } Pack",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "2390630",
+    "aliases": [
+      "{1 (acetaminophen 32.5 MG/ML / dextromethorphan hydrobromide 1 MG/ML / triprolidine hydrochloride 0.125 MG/ML Oral Solution) / 1 (dextromethorphan hydrobromide 1 MG/ML / guaifenesin 20 MG/ML / phenylephrine hydrochloride 0.5 MG/ML Oral Solution) } Pack",
+      "1 daytime (dextromethorphan HBr 20 MG / guaifenesin 400 MG / phenylephrine HCl 10 MG per 20 ML Oral Solution) / 1 nighttime (acetaminophen 650 MG / dextromethorphan HBr 20 MG / triprolidine HCl 2.5 MG per 20 ML Oral Solution) Pack",
+      "1 daytime (dextromethorphan HBr 20 MG / guaiFENesin 400 MG / phenylephrine HCl 10 MG in 20 mL Oral Solution) / 1 nighttime (acetaminophen 650 MG / dextromethorphan HBr 20 MG / triprolidine HCl 2.5 MG in 20 mL Oral Solution) Pack"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:31:49.392Z"
+  },
+  {
+    "generic": "{1 (acetaminophen 32.5 MG/ML / dextromethorphan hydrobromide 1 MG/ML / phenylephrine hydrochloride 0.5 MG/ML / triprolidine hydrochloride 0.125 MG/ML Oral Solution) / 1 (acetaminophen 32.5 MG/ML / guaifenesin 20 MG/ML / phenylephrine hydrochloride 0.5 MG/ML Oral Solution) } Pack",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "2397132",
+    "aliases": [
+      "{1 (acetaminophen 32.5 MG/ML / dextromethorphan hydrobromide 1 MG/ML / phenylephrine hydrochloride 0.5 MG/ML / triprolidine hydrochloride 0.125 MG/ML Oral Solution) / 1 (acetaminophen 32.5 MG/ML / guaifenesin 20 MG/ML / phenylephrine hydrochloride 0.5 MG/ML Oral Solution) } Pack",
+      "1 nighttime (acetaminophen 650 MG / dextromethorphan HBr 20 MG / phenylephrine HCl 10 MG / triprolidine HCl 2.5 MG in 20 mL Oral Solution) / 1 daytime (acetaminophen 650 MG / guaiFENesin 400 MG / phenylephrine HCl 10 MG in 20 mL Oral Solution) Pack"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:31:49.392Z"
+  },
+  {
+    "generic": "{1 (acetaminophen 500 MG / chlorpheniramine maleate 2 MG / dextromethorphan hydrobromide 15 MG / pseudoephedrine hydrochloride 30 MG Oral Tablet) / 1 (acetaminophen 500 MG / dextromethorphan hydrobromide 15 MG / pseudoephedrine hydrochloride 30 MG Oral Tablet) } Pack",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "2558505",
+    "aliases": [
+      "{1 (acetaminophen 500 MG / chlorpheniramine maleate 2 MG / dextromethorphan hydrobromide 15 MG / pseudoephedrine hydrochloride 30 MG Oral Tablet) / 1 (acetaminophen 500 MG / dextromethorphan hydrobromide 15 MG / pseudoephedrine hydrochloride 30 MG Oral Tablet) } Pack",
+      "1 daytime (acetaminophen 500 MG / dextromethorphan hydrobromide 15 MG / pseudoephedrine hydrochloride 30 MG Oral Tablet) / 1 nighttime (acetaminophen 500 MG / chlorpheniramine maleate 2 MG / dextromethorphan hydrobromide 15 MG / pseudoephedrine hydrochloride 30 MG Oral Tablet) Pack",
+      "1 daytime (acetaminophen 500 MG / dextromethorphan HBr 15 MG / pseudoephedrine HCl 30 MG Oral Tablet) / 1 nighttime (acetaminophen 500 MG / chlorpheniramine maleate 2 MG / dextromethorphan HBr 15 MG / pseudoephedrine HCl 30 MG Oral Tablet) Pack"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:31:49.392Z"
+  },
+  {
+    "generic": "{1 (acetaminophen 325 MG / dextromethorphan hydrobromide 10 MG / guaifenesin 200 MG / phenylephrine hydrochloride 5 MG Oral Tablet) / 1 (acetaminophen 325 MG / dextromethorphan hydrobromide 10 MG / phenylephrine hydrochloride 5 MG / triprolidine hydrochloride 1.25 MG Oral Tablet) } Pack",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "2560237",
+    "aliases": [
+      "{1 (acetaminophen 325 MG / dextromethorphan hydrobromide 10 MG / guaifenesin 200 MG / phenylephrine hydrochloride 5 MG Oral Tablet) / 1 (acetaminophen 325 MG / dextromethorphan hydrobromide 10 MG / phenylephrine hydrochloride 5 MG / triprolidine hydrochloride 1.25 MG Oral Tablet) } Pack",
+      "1 daytime (acetaminophen 325 MG / dextromethorphan HBr 10 MG / guaifenesin 200 MG / phenylephrine HCl 5 MG Oral Tablet) / 1 nighttime (acetaminophen 325 MG / dextromethorphan HBr 10 MG / phenylephrine HCl 5 MG / triprolidine HCl 1.25 MG Oral Tablet) Pack",
+      "1 daytime (acetaminophen 325 MG / dextromethorphan HBr 10 MG / guaiFENesin 200 MG / phenylephrine HCl 5 MG Oral Tablet) / 1 nighttime (acetaminophen 325 MG / dextromethorphan HBr 10 MG / phenylephrine HCl 5 MG / triprolidine HCl 1.25 MG Oral Tablet) Pack"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:31:49.392Z"
+  },
+  {
+    "generic": "{1 (acetaminophen 325 MG / dextromethorphan hydrobromide 10 MG / triprolidine hydrochloride 1.25 MG Oral Tablet) / 1 (dextromethorphan hydrobromide 10 MG / guaifenesin 200 MG / phenylephrine hydrochloride 5 MG Oral Tablet) } Pack",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "2560238",
+    "aliases": [
+      "{1 (acetaminophen 325 MG / dextromethorphan hydrobromide 10 MG / triprolidine hydrochloride 1.25 MG Oral Tablet) / 1 (dextromethorphan hydrobromide 10 MG / guaifenesin 200 MG / phenylephrine hydrochloride 5 MG Oral Tablet) } Pack",
+      "1 daytime (dextromethorphan HBr 10 MG / guaifenesin 200 MG / phenylephrine HCl 5 MG Oral Tablet) / 1 nighttime (acetaminophen 325 MG / dextromethorphan HBr 10 MG / triprolidine HCl 1.25 MG Oral Tablet) Pack",
+      "1 daytime (dextromethorphan HBr 10 MG / guaiFENesin 200 MG / phenylephrine HCl 5 MG Oral Tablet) / 1 nighttime (acetaminophen 325 MG / dextromethorphan HBr 10 MG / triprolidine HCl 1.25 MG Oral Tablet) Pack"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:31:49.392Z"
+  },
+  {
+    "generic": "{1 (acetaminophen 500 MG / chlorpheniramine maleate 2 MG / dextromethorphan hydrobromide 15 MG Oral Tablet) / 1 (acetaminophen 500 MG / dextromethorphan hydrobromide 15 MG Oral Tablet) } Pack",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "2604579",
+    "aliases": [
+      "{1 (acetaminophen 500 MG / chlorpheniramine maleate 2 MG / dextromethorphan hydrobromide 15 MG Oral Tablet) / 1 (acetaminophen 500 MG / dextromethorphan hydrobromide 15 MG Oral Tablet) } Pack",
+      "1 nighttime (acetaminophen 500 MG / chlorpheniramine maleate 2 MG / dextromethorphan HBr 15 MG Oral Tablet) / 1 daytime (acetaminophen 500 MG / dextromethorphan HBr 15 MG Oral Tablet) Pack",
+      "1 daytime (acetaminophen 500 MG / dextromethorphan HBr 15 MG Oral Tablet) / 1 nighttime (acetaminophen 500 MG / chlorpheniramine maleate 2 MG / dextromethorphan hydrobromide 15 MG Oral Tablet) Pack"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:31:49.392Z"
+  },
+  {
+    "generic": "{1 (acetaminophen 33.3 MG/ML / chlorpheniramine maleate 0.133 MG/ML / dextromethorphan hydrobromide 1 MG/ML Oral Solution) / 1 (acetaminophen 33.3 MG/ML / dextromethorphan hydrobromide 1 MG/ML Oral Solution) } Pack",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "2604635",
+    "aliases": [
+      "{1 (acetaminophen 33.3 MG/ML / chlorpheniramine maleate 0.133 MG/ML / dextromethorphan hydrobromide 1 MG/ML Oral Solution) / 1 (acetaminophen 33.3 MG/ML / dextromethorphan hydrobromide 1 MG/ML Oral Solution) } Pack",
+      "1 nighttime (acetaminophen 33.3 MG/ML / chlorpheniramine maleate 0.133 MG/ML / dextromethorphan HBr 1 MG/ML Oral Solution) / 1 daytime (acetaminophen 33.3 MG/ML / dextromethorphan HBr 1 MG/ML Oral Solution) Pack",
+      "1 nighttime (acetaminophen 1000 MG / chlorpheniramine maleate 4 MG / dextromethorphan HBr 30 MG in 30 mL Oral Solution) / 1 daytime (acetaminophen 1000 MG / dextromethorphan HBr 30 MG in 30 mL Oral Solution) Pack"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T16:31:49.392Z"
+  },
+  {
+    "generic": "sertraline 100 MG Oral Tablet [Zoloft]",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "208149",
+    "aliases": [
+      "sertraline 100 MG Oral Tablet [Zoloft]",
+      "Zoloft (as sertraline hydrochloride) 100 MG Oral Tablet",
+      "Zoloft 100 MG Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:17:27.083Z"
+  },
+  {
+    "generic": "sertraline 50 MG Oral Tablet [Zoloft]",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "208161",
+    "aliases": [
+      "sertraline 50 MG Oral Tablet [Zoloft]",
+      "Zoloft 50 MG Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:17:27.084Z"
+  },
+  {
+    "generic": "sertraline 25 MG Oral Tablet [Zoloft]",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "212233",
+    "aliases": [
+      "sertraline 25 MG Oral Tablet [Zoloft]",
+      "Zoloft 25 MG Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:17:27.084Z"
+  },
+  {
+    "generic": "sertraline 20 MG/ML Oral Solution [Zoloft]",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "861066",
+    "aliases": [
+      "sertraline 20 MG/ML Oral Solution [Zoloft]",
+      "Zoloft 20 MG per 1 ML Concentrate for Oral Solution",
+      "Zoloft 20 MG in 1 mL Concentrate for Oral Solution"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:17:27.084Z"
+  },
+  {
+    "generic": "sertraline 200 MG Oral Capsule",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "251201",
+    "aliases": [
+      "sertraline 200 MG Oral Capsule",
+      "sertraline 200 MG (as sertraline HCl 224 MG) Oral Capsule"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:17:27.085Z"
+  },
+  {
+    "generic": "sertraline 100 MG Oral Tablet",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "312938",
+    "aliases": [
+      "sertraline 100 MG Oral Tablet",
+      "sertraline (as sertraline HCl) 100 MG Oral Tablet",
+      "sertraline HCl 100 MG Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:17:27.085Z"
+  },
+  {
+    "generic": "sertraline 25 MG Oral Tablet",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "312940",
+    "aliases": [
+      "sertraline 25 MG Oral Tablet",
+      "sertraline (as sertraline HCl) 25 MG Oral Tablet",
+      "sertraline HCl 25 MG Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:17:27.085Z"
+  },
+  {
+    "generic": "sertraline 50 MG Oral Tablet",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "312941",
+    "aliases": [
+      "sertraline 50 MG Oral Tablet",
+      "sertraline (as sertraline HCl) 50 MG Oral Tablet",
+      "sertraline HCl 50 MG Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:17:27.085Z"
+  },
+  {
+    "generic": "sertraline 150 MG Oral Capsule",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "410584",
+    "aliases": [
+      "sertraline 150 MG Oral Capsule",
+      "sertraline 150 MG (as sertraline HCl 168 MG) Oral Capsule"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:17:27.085Z"
+  },
+  {
+    "generic": "sertraline 20 MG/ML Oral Solution",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "861064",
+    "aliases": [
+      "sertraline 20 MG/ML Oral Solution",
+      "sertraline (as sertraline hydrochloride) 20 MG per 1 ML Concentrate for Oral Solution",
+      "sertraline HCl 20 MG in 1 mL Concentrate for Oral Solution"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:17:27.085Z"
+  },
+  {
+    "generic": "alprazolam 0.25 MG Oral Tablet [Xanax]",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "141927",
+    "aliases": [
+      "alprazolam 0.25 MG Oral Tablet [Xanax]",
+      "Xanax 0.25 MG Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:18:52.007Z"
+  },
+  {
+    "generic": "alprazolam 0.5 MG Oral Tablet [Xanax]",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "141928",
+    "aliases": [
+      "alprazolam 0.5 MG Oral Tablet [Xanax]",
+      "Xanax 0.5 MG Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:18:52.007Z"
+  },
+  {
+    "generic": "alprazolam 1 MG Oral Tablet [Xanax]",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "214003",
+    "aliases": [
+      "alprazolam 1 MG Oral Tablet [Xanax]",
+      "Xanax 1 MG Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:18:52.007Z"
+  },
+  {
+    "generic": "alprazolam 2 MG Oral Tablet [Xanax]",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "214004",
+    "aliases": [
+      "alprazolam 2 MG Oral Tablet [Xanax]",
+      "Xanax 2 MG Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:18:52.007Z"
+  },
+  {
+    "generic": "24 HR alprazolam 3 MG Extended Release Oral Tablet [Xanax]",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "687022",
+    "aliases": [
+      "24 HR alprazolam 3 MG Extended Release Oral Tablet [Xanax]",
+      "24 HR Xanax 3 MG Extended Release Oral Tablet",
+      "Xanax XR 3 MG 24HR Extended Release Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:18:52.007Z"
+  },
+  {
+    "generic": "24 HR alprazolam 2 MG Extended Release Oral Tablet [Xanax]",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "687023",
+    "aliases": [
+      "24 HR alprazolam 2 MG Extended Release Oral Tablet [Xanax]",
+      "24 HR Xanax 2 MG Extended Release Oral Tablet",
+      "Xanax XR 2 MG 24HR Extended Release Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:18:52.007Z"
+  },
+  {
+    "generic": "24 HR alprazolam 1 MG Extended Release Oral Tablet [Xanax]",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "687024",
+    "aliases": [
+      "24 HR alprazolam 1 MG Extended Release Oral Tablet [Xanax]",
+      "24 HR Xanax 1 MG Extended Release Oral Tablet",
+      "Xanax XR 1 MG 24HR Extended Release Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:18:52.007Z"
+  },
+  {
+    "generic": "24 HR alprazolam 0.5 MG Extended Release Oral Tablet [Xanax]",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "687025",
+    "aliases": [
+      "24 HR alprazolam 0.5 MG Extended Release Oral Tablet [Xanax]",
+      "24 HR Xanax 0.5 MG Extended Release Oral Tablet",
+      "Xanax XR 0.5 MG 24HR Extended Release Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:18:52.008Z"
+  },
+  {
+    "generic": "alprazolam 1 MG Oral Tablet",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "197321",
+    "aliases": [
+      "alprazolam 1 MG Oral Tablet",
+      "ALPRAZolam 1 MG Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:18:52.008Z"
+  },
+  {
+    "generic": "alprazolam 2 MG Oral Tablet",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "197322",
+    "aliases": [
+      "alprazolam 2 MG Oral Tablet",
+      "ALPRAZolam 2 MG Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:18:52.008Z"
+  },
+  {
+    "generic": "alprazolam 0.25 MG Oral Tablet",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "308047",
+    "aliases": [
+      "alprazolam 0.25 MG Oral Tablet",
+      "ALPRAZolam 0.25 MG Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:18:52.008Z"
+  },
+  {
+    "generic": "alprazolam 0.5 MG Oral Tablet",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "308048",
+    "aliases": [
+      "alprazolam 0.5 MG Oral Tablet",
+      "ALPRAZolam 0.5 MG Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:18:52.008Z"
+  },
+  {
+    "generic": "alprazolam 0.1 MG/ML Oral Solution",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "308049",
+    "aliases": [
+      "alprazolam 0.1 MG/ML Oral Solution"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:18:52.008Z"
+  },
+  {
+    "generic": "alprazolam 1 MG/ML Oral Solution",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "308050",
+    "aliases": [
+      "alprazolam 1 MG/ML Oral Solution",
+      "alprazolam 1 MG per 1 ML Concentrate for Oral Solution",
+      "ALPRAZolam 1 MG in 1 mL Concentrate for Oral Solution"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:18:52.008Z"
+  },
+  {
+    "generic": "24 HR alprazolam 0.5 MG Extended Release Oral Tablet",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "433798",
+    "aliases": [
+      "24 HR alprazolam 0.5 MG Extended Release Oral Tablet",
+      "alprazolam 0.5 MG 24 HR Extended Release Oral Tablet",
+      "ALPRAZolam 0.5 MG 24HR Extended Release Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:18:52.008Z"
+  },
+  {
+    "generic": "24 HR alprazolam 2 MG Extended Release Oral Tablet",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "433799",
+    "aliases": [
+      "24 HR alprazolam 2 MG Extended Release Oral Tablet",
+      "alprazolam 2 MG 24 HR Extended Release Oral Tablet",
+      "ALPRAZolam 2 MG 24HR Extended Release Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:18:52.008Z"
+  },
+  {
+    "generic": "24 HR alprazolam 1 MG Extended Release Oral Tablet",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "433800",
+    "aliases": [
+      "24 HR alprazolam 1 MG Extended Release Oral Tablet",
+      "alprazolam 1 MG 24 HR Extended Release Oral Tablet",
+      "ALPRAZolam 1 MG 24HR Extended Release Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:18:52.008Z"
+  },
+  {
+    "generic": "24 HR alprazolam 3 MG Extended Release Oral Tablet",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "433801",
+    "aliases": [
+      "24 HR alprazolam 3 MG Extended Release Oral Tablet",
+      "alprazolam 3 MG 24 HR Extended Release Oral Tablet",
+      "ALPRAZolam 3 MG 24HR Extended Release Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:18:52.008Z"
+  },
+  {
+    "generic": "alprazolam 0.25 MG Disintegrating Oral Tablet",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "485413",
+    "aliases": [
+      "alprazolam 0.25 MG Disintegrating Oral Tablet",
+      "ALPRAZolam 0.25 MG Disintegrating Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:18:52.008Z"
+  },
+  {
+    "generic": "alprazolam 1 MG Disintegrating Oral Tablet",
+    "brand": "",
+    "strength": "",
+    "dosageForm": "",
+    "pack": "",
+    "rxcui": "485414",
+    "aliases": [
+      "alprazolam 1 MG Disintegrating Oral Tablet",
+      "ALPRAZolam 1 MG Disintegrating Oral Tablet"
+    ],
+    "sources": [
+      "RxNorm / NLM"
+    ],
+    "sourceUrl": "https://rxnav.nlm.nih.gov/",
+    "verified": true,
+    "importedAt": "2026-10-01T20:18:52.008Z"
+  }
+]

@@ -1,0 +1,15 @@
+node_modules/
+client/dist/
+.env
+.env.*
+!.env.example
+.DS_Store
+
+# Source datasets (29 MB) — regenerate with `npm run data:raw`.
+# The compiled artifacts in data/build/ ARE committed, because the server needs
+# them at runtime and Railway does not run the download step.
+data/raw/
+scripts/_*.mjs
+
+# Tesseract language model, re-downloaded automatically by the eval scripts.
+eng.traineddata

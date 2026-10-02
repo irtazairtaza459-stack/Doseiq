@@ -1,0 +1,52 @@
+DOSEIQ PROFESSIONAL V1
+=======================
+
+Aapko coding karne ki zaroorat nahi. Is folder ko VS Code mein open karein.
+
+WINDOWS PAR RUN KARNE KA TARIKA
+--------------------------------
+1. VS Code mein is folder ko open karein.
+2. Terminal > New Terminal kholein.
+3. Ye commands ek ek karke chalayein:
+
+   npm install
+   npm run dev
+
+4. Terminal mein Vite ka Local address aaye ga, aam tor par:
+
+   http://localhost:5173/
+
+5. Us address ko Chrome mein open karein.
+
+IMPORTANT
+---------
+- Root folder mein hi terminal kholna hai, client folder ke andar nahi.
+- Agar pehle npm install mein warning aaye to warning aur error ko alag samjhein.
+- Agar npm run dev par error aaye to terminal ki screenshot bhej dein.
+
+IS VERSION MEIN KYA MODIFY HUA HAI
+----------------------------------
+- Professional public DoseIQ landing website add ki gayi hai.
+- Existing DoseIQ app ko preserve kiya gaya hai.
+- Website se Open DoseIQ button existing app kholta hai.
+- Medicine catalogue se public medicine search add ki gayi hai.
+- Antibiotics section add kiya gaya hai.
+- Safety section aur educational guides section add kiye gaye hain.
+- Responsive mobile/tablet/desktop styling add ki gayi hai.
+- Root package.json mein proper dev script add ki gayi hai taake project root se run ho sake.
+
+NEXT DEVELOPMENT PHASES
+------------------------
+1. Medicine detail pages
+2. Expanded structured medicine database
+3. Antibiotic detail pages
+4. SEO metadata + sitemap
+5. Guides/blog system
+6. Better medicine search and filtering
+7. Production deployment
+
+MEDICAL NOTE
+------------
+DoseIQ educational medicine information aur safety tools provide karta hai. Ye doctor,
+pharmacist ya emergency service ka replacement nahi hai. Public launch se pehle medical
+content ko appropriate qualified sources/professionals se review karna zaroori hai.
