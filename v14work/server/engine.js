@@ -1,12 +1,18 @@
 // Clinical logic: drug matching, interactions, allergy cross-reactivity, missed-dose guidance.
 import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { globalIndexSearch } from './globalIndex.js';
 
-const drugs = JSON.parse(fs.readFileSync('data/pk-drugs.json', 'utf8'));
-const labels = JSON.parse(fs.readFileSync('data/build/labels.json', 'utf8'));
-const { names, adj } = JSON.parse(fs.readFileSync('data/build/interactions.json', 'utf8'));
-const brandAliases = JSON.parse(fs.readFileSync('data/brand-aliases.json', 'utf8'));
-const ocrRescue = JSON.parse(fs.readFileSync('data/ocr-rescue.json', 'utf8'));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const DATA = path.join(__dirname, '..', 'data');
+
+const drugs = JSON.parse(fs.readFileSync(path.join(DATA, 'pk-drugs.json'), 'utf8'));
+const labels = JSON.parse(fs.readFileSync(path.join(DATA, 'build', 'labels.json'), 'utf8'));
+const { names, adj } = JSON.parse(fs.readFileSync(path.join(DATA, 'build', 'interactions.json'), 'utf8'));
+const brandAliases = JSON.parse(fs.readFileSync(path.join(DATA, 'brand-aliases.json'), 'utf8'));
+const ocrRescue = JSON.parse(fs.readFileSync(path.join(DATA, 'ocr-rescue.json'), 'utf8'));
 
 const SEV = { 3: 'major', 2: 'moderate', 1: 'minor', 0: 'unknown' };
 const ddIndex = new Map(names.map((n, i) => [n.toLowerCase(), i]));
