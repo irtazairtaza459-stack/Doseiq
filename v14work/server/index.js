@@ -283,8 +283,12 @@ if (fs.existsSync(dist)) {
 
 app.use((err, _req, res, _next) => { console.error(err); bad(res, 500, 'internal error'); });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, '0.0.0.0', () => {
-  const s = engine.stats();
-  console.log(`DoseIQ on :${PORT} — ${s.drugs} drugs, ${s.brands} brands, ${s.interactionPairs.toLocaleString()} interactions`);
-});
+export default app;
+
+if (!process.env.VERCEL) {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, '0.0.0.0', () => {
+    const s = engine.stats();
+    console.log(`DoseIQ on :${PORT} — ${s.drugs} drugs, ${s.brands} brands, ${s.interactionPairs.toLocaleString()} interactions`);
+  });
+}
