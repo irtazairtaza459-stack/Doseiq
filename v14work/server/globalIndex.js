@@ -4,7 +4,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-const ROOT = path.join(process.cwd(), 'data');
+const ROOT = path.join(process.env.VERCEL ? '/tmp' : process.cwd(), 'data');
 const FILE = path.join(ROOT, 'global-medicine-index.json');
 const norm = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 
