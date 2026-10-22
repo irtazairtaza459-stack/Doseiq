@@ -203,3 +203,5 @@ Set `PHARMACIST_EMAIL` and/or `PHARMACIST_WHATSAPP` in the server environment. T
 
 ### Medical safety
 OCR results are suggestions and must be confirmed against the package/prescription. Interaction data marked as unchecked is not treated as proof of safety. DoseIQ is educational software and does not replace a licensed clinician or pharmacist.
+
+Deployment workflow test for DoseIQ.
