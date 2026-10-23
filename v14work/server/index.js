@@ -230,8 +230,35 @@ app.post('/api/global/ask', async (req, res) => {
 app.post('/api/ask', async (req, res) => {
   const q = String(req.body?.question || '').trim();
   if (!q) return bad(res, 400, 'question is required');
+  const mentioned = engine.findMentionedDrugs(q);
+  if (mentioned.length > 1) {
+    const review = engine.checkInteractions(mentioned.map((drug) => drug.generic));
+    const milkAsked = /milk|dairy|doodh|lassi|yoghurt|dahi/i.test(q);
+    const interaction = review.interactions[0];
+    let answer, answerUr;
+    if (interaction) {
+      answer = interaction.advice;
+      answerUr = interaction.adviceUr;
+      if (milkAsked) {
+        answer += ' Milk does not remove or prevent this medicine interaction.';
+        answerUr += ' دودھ اس دواؤں کے باہمی تعامل کو ختم یا روک نہیں سکتا۔';
+      }
+    } else if (review.coverage !== 'complete') {
+      answer = `I could not fully check ${mentioned.map((drug) => drug.generic).join(' and ')} for interactions in the local data. No listed interaction is not proof that the combination is safe; ask a pharmacist or doctor.`;
+      answerUr = `${mentioned.map((drug) => drug.urdu).join(' اور ')} کے باہمی تعامل کی مقامی معلومات سے مکمل جانچ نہیں ہو سکی۔ تعامل درج نہ ہونا اس بات کی ضمانت نہیں کہ یہ امتزاج محفوظ ہے؛ ڈاکٹر یا فارماسسٹ سے پوچھیں۔`;
+    } else {
+      answer = `No interaction was listed for ${mentioned.map((drug) => drug.generic).join(' and ')} in the app's local interaction data. This does not prove the combination is safe; confirm with a pharmacist or doctor.`;
+      answerUr = `ایپ کے مقامی ڈیٹا میں ${mentioned.map((drug) => drug.urdu).join(' اور ')} کے درمیان کوئی تعامل درج نہیں۔ اس کا مطلب یہ نہیں کہ امتزاج یقینی طور پر محفوظ ہے؛ ڈاکٹر یا فارماسسٹ سے تصدیق کریں۔`;
+    }
+    return ok(res, {
+      answered: true, drug: mentioned.map((drug) => drug.generic).join(', '),
+      severity: interaction?.severity || null, answer, answerUr,
+      sources: [{ name: 'DDInter 2.0 interaction dataset', url: 'https://ddinter2.scbdd.com/' }],
+      disclaimer: 'Interaction screening is not a diagnosis. Do not stop or change prescribed medicines without advice from your doctor or pharmacist.',
+    });
+  }
   const { best } = engine.matchDrug(q, { minConfidence: 0.62 });
-  if (!best || best.global) {
+  if (!mentioned.length && (!best || best.global)) {
     try {
       const global = await globalDrugSearch(q);
       const globalResult = globalAnswer(q, global);
@@ -242,7 +269,7 @@ app.post('/api/ask', async (req, res) => {
       answerUr: 'میں اس دوا کو مقامی یا عالمی دوا کے ماخذ میں شناخت نہیں کر سکا۔ براہ کرم پیک پر لکھا ہوا درست نام درج کریں۔' });
   }
 
-  const d = engine.getDrug(best.generic);
+  const d = mentioned[0] || engine.getDrug(best.generic);
   const food = engine.foodAdvice(d.generic);
   const label = engine.getLabel(d.generic);
   const lower = q.toLowerCase();
@@ -250,8 +277,8 @@ app.post('/api/ask', async (req, res) => {
 
   if (/milk|dairy|doodh|lassi|yoghurt|dahi/.test(lower)) {
     const dairy = food.notes.find((n) => /dairy|Milk/i.test(n.item));
-    answer = dairy ? dairy.en : `${d.generic} does not have a known problem with milk or dairy.`;
-    answerUr = dairy ? dairy.ur : `${d.urdu} کے ساتھ دودھ یا دہی کا کوئی معلوم مسئلہ نہیں۔`;
+    answer = dairy ? dairy.en : `The app has no specific milk interaction listed for ${d.generic}. This is not proof that every product can be taken with milk; follow the package label or ask a pharmacist.`;
+    answerUr = dairy ? dairy.ur : `ایپ میں ${d.urdu} کے ساتھ دودھ کا کوئی مخصوص تعامل درج نہیں۔ اس کا مطلب یہ نہیں کہ ہر دوا دودھ کے ساتھ لی جا سکتی ہے؛ پیک کی ہدایت پر عمل کریں یا فارماسسٹ سے پوچھیں۔`;
   } else if (/kab|when|time|timing|waqt|khani|leni/.test(lower)) {
     const map = { before_meal: ['Take it before food.', 'کھانے سے پہلے لیں۔'], after_meal: ['Take it after food.', 'کھانے کے بعد لیں۔'], with_meal: ['Take it with food.', 'کھانے کے ساتھ لیں۔'], empty_stomach: ['Take it on an empty stomach, 30-60 minutes before eating.', 'خالی پیٹ، کھانے سے 30-60 منٹ پہلے لیں۔'], morning: ['Take it in the morning.', 'صبح لیں۔'], night: ['Take it at night.', 'رات کو لیں۔'], any: ['It can be taken at any time of day.', 'دن میں کسی بھی وقت لی جا سکتی ہے۔'] };
     const [en, ur] = map[d.timing] || map.any;
@@ -272,6 +299,7 @@ app.post('/api/ask', async (req, res) => {
 
   ok(res, { answered: true, drug: d.generic, urdu: d.urdu, confidence: best.confidence,
     answer, answerUr,
+    sources: food.notes.find((n) => n.sourceUrl) ? [{ name: food.notes.find((n) => n.sourceUrl).source, url: food.notes.find((n) => n.sourceUrl).sourceUrl }] : [],
     disclaimer: 'Information from open medicine data. Not a substitute for a pharmacist or doctor.' });
 });
 

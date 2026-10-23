@@ -150,6 +150,7 @@ export function globalAnswer(question, result) {
   const label = chooseLabel(result.labels || [], question);
   const candidate = result.candidates?.[0] || null;
   if (!label && !candidate) return null;
+  if (!label && /\b(can i|should i|is it|does it|what|how|when|with|take|together|milk|doodh|sath|saath)\b/i.test(String(question))) return null;
 
   const lower = String(question).toLowerCase();
   let topic = 'overview';

@@ -22,6 +22,7 @@ const ddIndex = new Map(names.map((n, i) => [n.toLowerCase(), i]));
 // Dose forms and strengths that doctors write around the drug name.
 const NOISE = /\b(tab|tabs|tablet|cap|caps|capsule|syp|syrup|susp|inj|injection|drops|cream|oint|sachet|mg|ml|mcg|gm|g|bd|od|tds|qid|hs|sos|prn|stat|daily|twice|thrice|x|no|nos)\b|[0-9]+(\.[0-9]+)?/gi;
 const clean = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9\s.]/g, ' ').replace(NOISE, ' ').replace(/\s+/g, ' ').trim();
+const normalizeMention = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 
 function levenshtein(a, b) {
   if (a === b) return 0;
@@ -46,6 +47,23 @@ for (const d of drugs) {
 for (const a of brandAliases) {
   const d = drugs.find((x) => x.generic.toLowerCase() === String(a.generic).toLowerCase());
   if (d) lexicon.push({ term: String(a.brand).toLowerCase(), drug: d, kind: 'brand', aliasSource: a.source });
+}
+
+export function findMentionedDrugs(raw) {
+  const text = ` ${normalizeMention(raw)} `;
+  if (!text.trim()) return [];
+  const matches = new Map();
+  for (const entry of lexicon) {
+    const term = normalizeMention(entry.term);
+    if (term.length < 3) continue;
+    const position = text.indexOf(` ${term} `);
+    if (position < 0) continue;
+    const previous = matches.get(entry.drug.generic);
+    if (!previous || position < previous.position) {
+      matches.set(entry.drug.generic, { drug: entry.drug, position });
+    }
+  }
+  return [...matches.values()].sort((a, b) => a.position - b.position).map(({ drug }) => drug);
 }
 
 /**
@@ -85,6 +103,14 @@ export function matchDrug(raw, { limit = 5, minConfidence = 0.55 } = {}) {
   const rawKey = original.toLowerCase().replace(/[^a-z0-9\s.]/g, ' ').replace(/\s+/g, ' ').trim();
   const q = clean(original);
   if (!q) return { best: null, candidates: [] };
+
+  const mentioned = findMentionedDrugs(original);
+  if (mentioned.length) {
+    const hit = mentioned.map((drug) => ({
+      generic: drug.generic, urdu: drug.urdu, matchedOn: drug.generic, brand: '', confidence: 0.99,
+    }));
+    return { best: hit[0], candidates: hit.slice(0, limit) };
+  }
 
   // Explicit aliases are safer than broad fuzzy matching for branded packs.
   const normalizedKey = normalizeOcr(rawKey);
@@ -433,7 +459,8 @@ export function foodAdvice(generic) {
   const d = getDrug(generic);
   if (!d) return null;
   const notes = [];
-  if (d.avoidDairy) notes.push({ item: 'Milk, yoghurt, lassi', en: 'Do not take with dairy — calcium blocks absorption. Leave 2 hours either side.', ur: 'دودھ، دہی یا لسی کے ساتھ نہ لیں — کیلشیم دوا کو جذب ہونے سے روکتا ہے۔ 2 گھنٹے کا وقفہ رکھیں۔' });
+  if (d.milkAdvice) notes.push({ item: 'Milk, yoghurt, lassi', ...d.milkAdvice });
+  else if (d.avoidDairy) notes.push({ item: 'Milk, yoghurt, lassi', en: 'Avoid taking with dairy unless your product label or pharmacist advises otherwise; follow the medicine-specific instructions.', ur: 'دوا کے مخصوص لیبل یا فارماسسٹ کے مشورے کے بغیر دودھ یا دہی کے ساتھ نہ لیں؛ دوا کی ہدایات پر عمل کریں۔' });
   if (d.avoidGrapefruit) notes.push({ item: 'Grapefruit', en: 'Avoid grapefruit juice — it raises the level of this medicine in your blood.', ur: 'چکوترے کا رس نہ لیں — یہ دوا کی مقدار خون میں بڑھا دیتا ہے۔' });
   if (d.avoidAlcohol) notes.push({ item: 'Alcohol', en: 'Do not drink alcohol during the course and for 48 hours after — it causes severe vomiting with this medicine.', ur: 'اس دوا کے دوران اور 48 گھنٹے بعد تک الکحل نہ لیں — شدید قے ہو سکتی ہے۔' });
   if (d.timing === 'empty_stomach') notes.push({ item: 'Chai / breakfast', en: 'Take it 30-60 minutes before chai or breakfast, on an empty stomach.', ur: 'چائے یا ناشتے سے 30-60 منٹ پہلے خالی پیٹ لیں۔' });

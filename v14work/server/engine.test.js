@@ -1,6 +1,24 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { checkInteractions, estimateKidney, missedDoseGuidance, organReview } from './engine.js';
+import { checkInteractions, estimateKidney, findMentionedDrugs, foodAdvice, matchDrug, missedDoseGuidance, organReview } from './engine.js';
+
+test('resolves exact local medicine names inside natural-language questions before global matches', () => {
+  assert.deepEqual(
+    findMentionedDrugs('kia main Warfarin + Aspirin ko milk ke sath le lon').map((drug) => drug.generic),
+    ['Warfarin', 'Aspirin'],
+  );
+  assert.deepEqual(
+    findMentionedDrugs('Can I take Doxycycline with milk?').map((drug) => drug.generic),
+    ['Doxycycline'],
+  );
+  assert.equal(matchDrug('Can I take Doxycycline with milk?').best.generic, 'Doxycycline');
+});
+
+test('uses verified product-specific doxycycline guidance for milk', () => {
+  const note = foodAdvice('Doxycycline').notes[0];
+  assert.match(note.en, /not markedly affected by food or milk/i);
+  assert.match(note.sourceUrl, /dailymed\.nlm\.nih\.gov/);
+});
 
 test('uses a reported CrCl instead of calculating from serum creatinine', () => {
   assert.deepEqual(

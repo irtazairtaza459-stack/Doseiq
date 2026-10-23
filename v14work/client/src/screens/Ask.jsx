@@ -37,7 +37,7 @@ export default function Ask({ t, lang, notify }) {
     try {
       const r = await api.ask(q);
       const shown = lang === 'ur' ? r.answerUr : r.answer;
-      setMsgs((m) => [...m, { who: 'bot', text: shown, en: r.answer, ur: r.answerUr, drug: r.drug, global: r.global, sources: r.sources }]);
+      setMsgs((m) => [...m, { who: 'bot', text: shown, en: r.answer, ur: r.answerUr, drug: r.drug, global: r.global, severity: r.severity, sources: r.sources }]);
     } catch {
       setMsgs((m) => [...m, { who: 'bot', text: t('common.error') }]);
     } finally { setBusy(false); }
@@ -92,16 +92,21 @@ export default function Ask({ t, lang, notify }) {
       <div className="chat">
         {msgs.map((m, i) => (
           <div className={`msg ${m.who}`} key={i} dir="auto">
+            {m.who === 'bot' && m.severity && (
+              <div className={`sev ${m.severity}`} style={{ display: 'inline-flex', padding: '4px 8px', marginBottom: 6 }}>
+                <span className="badge">{t(`safety.${m.severity}`)}</span>
+              </div>
+            )}
             {m.who === 'bot' && m.en ? (lang === 'ur' ? m.ur : m.en) : m.text}
             {m.who === 'bot' && m.drug && (
               <button className="btn sm" style={{ marginTop: 8 }} onClick={() => speak(m.en, m.ur)}>
                 <Icon name="speaker" /> {t('ask.listen')}
               </button>
             )}
-            {m.who === 'bot' && m.global && m.sources?.length > 0 && (
+            {m.who === 'bot' && m.sources?.some((s) => s.url) && (
               <div className="muted" style={{ marginTop: 8, fontSize: 11 }}>
                 {lang === 'ur' ? 'ماخذ: ' : 'Sources: '}
-                {m.sources.map((s, si) => <a key={si} href={s.url} target="_blank" rel="noreferrer" style={{ marginRight: 8 }}>{s.name}</a>)}
+                {m.sources.filter((s) => s.url).map((s, si) => <a key={si} href={s.url} target="_blank" rel="noreferrer" style={{ marginRight: 8 }}>{s.name}</a>)}
               </div>
             )}
           </div>
