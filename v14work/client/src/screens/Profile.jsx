@@ -38,7 +38,7 @@ export default function Profile({ t, lang, state, actions, notify, go }) {
       <div className="card health-summary">
         <div><span>Age</span><b>{health.age || '—'}</b></div>
         <div><span>Weight</span><b>{health.weightKg ? `${health.weightKg} kg` : '—'}</b></div>
-        <div><span>Kidney</span><b>{health.creatinine ? 'Added' : 'Not added'}</b></div>
+        <div><span>Kidney</span><b>{health.creatinine || health.crcl ? 'Added' : 'Not added'}</b></div>
       </div>
       <button className="btn primary" onClick={() => go('safety')}>
         <Icon name="safety" /> {lang === 'ur' ? 'گردے اور جگر کی جانچ کھولیں' : 'Open kidney & liver check'}

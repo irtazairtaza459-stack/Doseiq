@@ -226,18 +226,23 @@ export const getLabel = (generic) => labels[generic] || null;
  * as unchecked rather than silently passing as safe.
  */
 export function checkInteractions(generics) {
-  const resolved = generics.map(getDrug).filter(Boolean);
+  const requested = (Array.isArray(generics) ? generics : [generics]).map((generic) => String(generic));
+  const resolved = requested.map(getDrug).filter(Boolean);
   const found = [];
-  const unchecked = [];
+  const unchecked = requested.filter((generic) => !getDrug(generic));
   let checkedPairs = 0;
   let noKnownInteractionPairs = 0;
 
-  for (const d of resolved) if (d.interactionData === 'none') unchecked.push(d.generic);
+  for (const d of resolved) {
+    if (d.interactionData !== 'ddinter' || !d.ddinter || !ddIndex.has(d.ddinter.toLowerCase())) {
+      unchecked.push(d.generic);
+    }
+  }
 
   for (let i = 0; i < resolved.length; i++) {
     for (let j = i + 1; j < resolved.length; j++) {
       const A = resolved[i], B = resolved[j];
-      if (A.interactionData === 'none' || B.interactionData === 'none') continue;
+      if (A.interactionData !== 'ddinter' || B.interactionData !== 'ddinter') continue;
       const ia = ddIndex.get(A.ddinter.toLowerCase());
       const ib = ddIndex.get(B.ddinter.toLowerCase());
       if (ia === undefined || ib === undefined) continue;
@@ -245,7 +250,10 @@ export function checkInteractions(generics) {
       const hit = (adj[ia] || []).find(([other]) => other === ib);
       if (!hit) { noKnownInteractionPairs += 1; continue; }
       const severity = SEV[hit[1]];
-      if (severity === 'unknown') { noKnownInteractionPairs += 1; continue; }
+      if (severity === 'unknown') {
+        unchecked.push(A.generic, B.generic);
+        continue;
+      }
       found.push({
         a: A.generic, b: B.generic, aUrdu: A.urdu, bUrdu: B.urdu, severity,
         advice: adviceFor(severity, A, B),
@@ -264,22 +272,25 @@ export function checkInteractions(generics) {
 
   const order = { major: 0, moderate: 1, minor: 2 };
   found.sort((x, y) => order[x.severity] - order[y.severity]);
-  return { interactions: found, duplicates, unchecked,
+  const uniqueUnchecked = [...new Set(unchecked)];
+  const totalPairs = requested.length * (requested.length - 1) / 2;
+  return { interactions: found, duplicates, unchecked: uniqueUnchecked,
+    coverage: uniqueUnchecked.length || checkedPairs < totalPairs ? 'partial' : 'complete',
     summary: { major: found.filter((f) => f.severity === 'major').length,
       moderate: found.filter((f) => f.severity === 'moderate').length,
       minor: found.filter((f) => f.severity === 'minor').length,
-      checkedPairs, noKnownInteractionPairs } };
+      checkedPairs, totalPairs, noKnownInteractionPairs } };
 }
 
 function adviceFor(sev, A, B) {
-  if (sev === 'major') return `Do not take ${A.generic} and ${B.generic} together without asking a doctor or pharmacist first.`;
-  if (sev === 'moderate') return `${A.generic} and ${B.generic} can affect each other. Space the doses apart and tell your doctor you take both.`;
-  return `${A.generic} and ${B.generic} have a mild interaction. Usually fine, but mention it at your next visit.`;
+  if (sev === 'major') return `${A.generic} and ${B.generic} have a potentially serious interaction. Contact your doctor or pharmacist promptly. Do not stop or change a prescribed medicine without their advice.`;
+  if (sev === 'moderate') return `${A.generic} and ${B.generic} may affect each other. Ask your doctor or pharmacist whether both are appropriate for you; do not change doses or timing based on this alert.`;
+  return `A mild interaction is listed for ${A.generic} and ${B.generic}. Ask your pharmacist whether it matters for you; do not change treatment based only on this alert.`;
 }
 function adviceForUr(sev, A, B) {
-  if (sev === 'major') return `${A.urdu} اور ${B.urdu} ایک ساتھ نہ لیں۔ پہلے ڈاکٹر یا فارماسسٹ سے پوچھیں۔`;
-  if (sev === 'moderate') return `${A.urdu} اور ${B.urdu} ایک دوسرے پر اثر ڈال سکتی ہیں۔ وقفے سے لیں اور ڈاکٹر کو بتائیں۔`;
-  return `${A.urdu} اور ${B.urdu} میں معمولی تعامل ہے۔ عام طور پر ٹھیک ہے، ڈاکٹر کو بتا دیں۔`;
+  if (sev === 'major') return `${A.urdu} اور ${B.urdu} کے درمیان ممکنہ طور پر سنگین تعامل ہے۔ جلد ڈاکٹر یا فارماسسٹ سے رابطہ کریں۔ ان کے مشورے کے بغیر تجویز کردہ دوا بند یا تبدیل نہ کریں۔`;
+  if (sev === 'moderate') return `${A.urdu} اور ${B.urdu} ایک دوسرے پر اثر ڈال سکتی ہیں۔ اپنے ڈاکٹر یا فارماسسٹ سے پوچھیں کہ کیا یہ دونوں آپ کے لیے مناسب ہیں؛ اس اطلاع کی بنیاد پر خوراک یا وقت خود نہ بدلیں۔`;
+  return `${A.urdu} اور ${B.urdu} کے درمیان معمولی تعامل درج ہے۔ فارماسسٹ سے پوچھیں کہ یہ آپ کے لیے اہم ہے یا نہیں؛ صرف اس اطلاع کی بنیاد پر علاج نہ بدلیں۔`;
 }
 
 
@@ -377,6 +388,7 @@ export function checkAllergies(generics, allergyGroups = []) {
 // class gets its own rule and doubling is never advised.
 const MISSED = {
   prn: { en: 'This medicine is taken only when you need it. Skip the missed dose — do not take two at once.', ur: 'یہ دوا صرف ضرورت پر لی جاتی ہے۔ چھوٹی ہوئی خوراک چھوڑ دیں — دو ایک ساتھ نہ لیں۔', double: false },
+  clinician: { en: 'Follow the instructions from your prescriber or pharmacist for this medicine. Contact them for advice about a missed dose; do not take an extra or double dose.', ur: 'اس دوا کے لیے اپنے تجویز کنندہ یا فارماسسٹ کی ہدایات پر عمل کریں۔ خوراک رہ جائے تو ان سے مشورہ کریں؛ اضافی یا دگنی خوراک نہ لیں۔', double: false, escalate: 1 },
   antibiotic_fixed: { en: 'Take it as soon as you remember. If your next dose is due in under 4 hours, skip the missed one. Never take two together, and finish the full course even if you feel better.', ur: 'یاد آتے ہی لے لیں۔ اگر اگلی خوراک 4 گھنٹے سے کم میں ہے تو چھوڑ دیں۔ دو ایک ساتھ نہ لیں، اور کورس پورا کریں چاہے طبیعت بہتر ہو۔', double: false, escalate: 2 },
   once_daily: { en: 'If you remember on the same day, take it. If it is already the next day, skip it and carry on as normal.', ur: 'اگر اسی دن یاد آئے تو لے لیں۔ اگلا دن ہو چکا ہو تو چھوڑ دیں اور معمول جاری رکھیں۔', double: false },
   hypo_risk: { en: 'Only take it if you are about to eat. If the meal has passed, skip it — taking it without food can drop your blood sugar dangerously low.', ur: 'صرف اس صورت لیں اگر آپ کھانا کھانے والے ہیں۔ کھانا گزر چکا ہو تو چھوڑ دیں — خالی پیٹ لینے سے شوگر خطرناک حد تک گر سکتی ہے۔', double: false, escalate: 2 },
@@ -502,41 +514,72 @@ export function priceFor(generic, { strength = null, brand = null, form = null, 
  * Cockcroft-Gault creatinine clearance. Returns null unless every input is present,
  * because a half-filled estimate is worse than none.
  */
-export function estimateKidney({ age, weightKg, creatinine, sex }) {
+export function estimateKidney({ age, weightKg, creatinine, sex, crcl: reportedCrcl }) {
+  if (reportedCrcl !== undefined && reportedCrcl !== null && String(reportedCrcl).trim() !== '') {
+    return kidneyResult(Number(reportedCrcl), 'Reported CrCl');
+  }
   const a = Number(age), w = Number(weightKg), cr = Number(creatinine);
-  if (!a || !w || !cr || a <= 0 || w <= 0 || cr <= 0) return null;
+  if (![a, w, cr].every(Number.isFinite) || a < 18 || a > 120 || w <= 0 || cr <= 0) return null;
+  const normalizedSex = String(sex || '').toLowerCase();
+  if (normalizedSex !== 'male' && normalizedSex !== 'female') return null;
   let crcl = ((140 - a) * w) / (72 * cr);
-  if (String(sex).toLowerCase().startsWith('f')) crcl *= 0.85;
-  crcl = Math.round(crcl);
+  if (normalizedSex === 'female') crcl *= 0.85;
+  return kidneyResult(crcl, 'Cockcroft-Gault');
+}
+
+function kidneyResult(value, formula) {
+  if (!Number.isFinite(value) || value <= 0 || value > 300) return null;
+  const crcl = Math.round(value);
   const stage = crcl >= 90 ? 'normal' : crcl >= 60 ? 'mild' : crcl >= 30 ? 'moderate' : crcl >= 15 ? 'severe' : 'failure';
-  return { crcl, stage, formula: 'Cockcroft-Gault' };
+  return { crcl, stage, formula };
 }
 
 export function organReview(generics, { kidney = null, liverDisease = false } = {}) {
   const flags = [];
-  for (const g of generics) {
-    const d = getDrug(g);
-    if (!d) continue;
+  const requested = (Array.isArray(generics) ? generics : [generics]).map((generic) => String(generic));
+  const resolved = requested.map((generic) => ({ generic, drug: getDrug(generic) }));
+  const unchecked = [];
+  for (const { generic, drug: d } of resolved) {
+    if (!d) {
+      unchecked.push(generic);
+      continue;
+    }
     if (d.renal && kidney?.crcl != null) {
       const { avoidBelow, adjustBelow, note, noteUr } = d.renal;
       if (avoidBelow != null && kidney.crcl < avoidBelow) {
         flags.push({ drug: d.generic, urdu: d.urdu, organ: 'kidney', level: 'avoid',
-          message: `Kidney function is ${kidney.crcl} mL/min. ${note}`, messageUr: noteUr });
+          message: `Kidney function is ${kidney.crcl} mL/min. ${note}`, messageUr: noteUr,
+          source: d.renal.source, sourceUrl: d.renal.sourceUrl });
       } else if (adjustBelow != null && kidney.crcl < adjustBelow) {
         flags.push({ drug: d.generic, urdu: d.urdu, organ: 'kidney', level: 'adjust',
-          message: `Kidney function is ${kidney.crcl} mL/min. ${note}`, messageUr: noteUr });
+          message: `Kidney function is ${kidney.crcl} mL/min. ${note}`, messageUr: noteUr,
+          source: d.renal.source, sourceUrl: d.renal.sourceUrl });
+      } else if (d.renal.monitorNote) {
+        flags.push({ drug: d.generic, urdu: d.urdu, organ: 'kidney', level: 'caution',
+          message: d.renal.monitorNote, messageUr: d.renal.monitorNoteUr,
+          source: d.renal.source, sourceUrl: d.renal.sourceUrl });
       }
+    } else if (!kidney) {
+      unchecked.push(d.generic);
+      if (d.renal?.monitorNote) {
+        flags.push({ drug: d.generic, urdu: d.urdu, organ: 'kidney', level: 'caution',
+          message: d.renal.monitorNote, messageUr: d.renal.monitorNoteUr,
+          source: d.renal.source, sourceUrl: d.renal.sourceUrl });
+      }
+    } else if (!d.renal) {
+      unchecked.push(d.generic);
     }
     if (d.hepatic && liverDisease) {
       flags.push({ drug: d.generic, urdu: d.urdu, organ: 'liver', level: d.hepatic.level,
         message: d.hepatic.note, messageUr: d.hepatic.noteUr });
+    } else if (liverDisease && !d.hepatic) {
+      unchecked.push(d.generic);
     }
   }
   const order = { avoid: 0, adjust: 1, caution: 2 };
   flags.sort((a, b) => (order[a.level] ?? 3) - (order[b.level] ?? 3));
-  // Say plainly when nothing could be checked, rather than implying all-clear.
-  const checkable = generics.map(getDrug).filter((d) => d && (d.renal || d.hepatic)).length;
-  return { flags, checkable, kidney, liverDisease,
+  const checkable = resolved.filter(({ drug }) => drug && (drug.renal || drug.hepatic)).length;
+  return { flags, checkable, unchecked: [...new Set(unchecked)], kidney, liverDisease,
     incomplete: !kidney && !liverDisease ? 'No kidney or liver information entered, so these checks were not run.' : null };
 }
 

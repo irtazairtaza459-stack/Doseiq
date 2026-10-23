@@ -3,7 +3,7 @@ const KEY = 'doseiq.v1';
 
 const empty = {
   meds: [], allergies: [], caregiver: { name: '', phone: '' }, lang: 'en', log: {},
-  health: { age: '', weightKg: '', creatinine: '', sex: 'male', liverDisease: false },
+  health: { age: '', weightKg: '', creatinine: '', crcl: '', sex: 'male', liverDisease: false },
   reports: [],
 };
 

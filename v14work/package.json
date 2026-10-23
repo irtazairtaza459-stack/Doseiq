@@ -10,6 +10,7 @@
     "dev": "concurrently -k \"node --watch server/index.js\" \"vite\"",
     "build": "vite build",
     "start": "node server/index.js",
+    "test": "node --test server/engine.test.js",
     "data": "node scripts/build-interactions.mjs && node scripts/fetch-labels.mjs && node scripts/enrich-side-effects.mjs",
     "eval:ocr": "node scripts/eval-ocr.mjs",
     "data:raw": "bash scripts/fetch-raw.sh",

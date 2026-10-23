@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { api } from '../api.js';
 import { Icon, Spinner, Empty, Sheet, Lat } from '../ui.jsx';
 
-const ALLERGY_GROUPS = ['penicillin', 'cephalosporin', 'sulfonamide', 'nsaid', 'macrolide', 'quinolone', 'tetracycline', 'opioid'];
+const ALLERGY_GROUPS = ['penicillin', 'cephalosporin', 'sulfonamide', 'nsaid', 'macrolide', 'quinolone', 'tetracycline', 'opioid', 'aminoglycoside'];
 
 export default function Safety({ t, lang, state, actions, notify, go }) {
   const [result, setResult] = useState(null);
@@ -105,7 +105,7 @@ export default function Safety({ t, lang, state, actions, notify, go }) {
 
       {result && !busy && (
         <>
-          <div className={`sev ${result.risk === 'high' ? 'major' : result.risk === 'medium' ? 'moderate' : 'good'}`}>
+          <div className={`sev ${result.risk === 'high' ? 'major' : result.risk === 'low' ? 'good' : 'moderate'}`}>
             <span className="badge">{t('safety.risk')}</span>
             <div style={{ flex: 1 }}>
               <b>{t(`safety.${result.risk}`)}</b>
@@ -179,24 +179,36 @@ export default function Safety({ t, lang, state, actions, notify, go }) {
           {t('organ.run')}
         </button>
       </div>
-      {!organ || organ.incomplete ? (
-        <div className="card"><p>{t('organ.noData')}</p></div>
-      ) : (
+      {!organ && <div className="card"><p>{t('organ.noData')}</p></div>}
+      {organ && (
         <>
+          {organ.incomplete && <div className="card"><p>{t('organ.noData')}</p></div>}
           {organ.kidney && (
             <div className={`sev ${organ.kidney.crcl < 30 ? 'major' : organ.kidney.crcl < 60 ? 'moderate' : 'good'}`}>
               <span className="badge"><Lat>{organ.kidney.crcl} mL/min</Lat></span>
-              <div><b>{t('organ.result')}</b><p>{t(`organ.stage.${organ.kidney.stage}`)}</p></div>
+              <div><b>{t('organ.result')}</b><p>{t(`organ.stage.${organ.kidney.stage}`)}</p>
+                <small>{organ.kidney.formula === 'Reported CrCl' ? t('organ.reportedCrcl') : t('organ.estimatedCrcl')}</small>
+              </div>
             </div>
           )}
           {!organ.flags.length ? (
-            <div className="card"><p>{t('organ.ok')}</p></div>
+            !organ.incomplete && (organ.unchecked.length || !organ.checkable)
+              ? <div className="sev moderate"><span className="badge">{t('organ.partial')}</span><div><p>{t('organ.ok')}</p></div></div>
+              : !organ.incomplete && <div className="sev good"><span className="badge">{t('organ.clear')}</span><div><p>{t('organ.ok')}</p></div></div>
           ) : organ.flags.map((f, n) => (
             <div className={`sev ${f.level === 'avoid' ? 'major' : 'moderate'}`} key={n}>
               <span className="badge">{t(`organ.${f.level}`)}</span>
-              <div><b><Lat>{f.drug}</Lat></b><p>{lang === 'ur' ? f.messageUr : f.message}</p></div>
+              <div><b><Lat>{f.drug}</Lat></b><p>{lang === 'ur' ? f.messageUr : f.message}</p>
+                {f.sourceUrl && <a href={f.sourceUrl} target="_blank" rel="noreferrer">{f.source || f.sourceUrl}</a>}
+              </div>
             </div>
           ))}
+          {organ.unchecked.length > 0 && (
+            <div className="sev moderate">
+              <span className="badge">{t('organ.partial')}</span>
+              <div><p>{t('organ.unchecked', { list: organ.unchecked.join(', ') })}</p></div>
+            </div>
+          )}
         </>
       )}
 
@@ -283,10 +295,14 @@ export default function Safety({ t, lang, state, actions, notify, go }) {
 
 
 function OrganSheet({ t, state, actions, onClose, notify }) {
-  const [h, setH] = useState(state.health);
+  const [h, setH] = useState({
+    age: '', weightKg: '', creatinine: '', crcl: '', sex: 'male', liverDisease: false,
+    ...state.health,
+  });
   return (
     <Sheet title={t('organ.title')} onClose={onClose}>
       <p className="muted" style={{ marginBottom: 12 }}>{t('organ.fromLab')}</p>
+      <p className="muted" style={{ marginBottom: 12 }}>{t('organ.clinicalNote')}</p>
       <div className="btnRow">
         <div className="field" style={{ flex: 1 }}>
           <label>{t('organ.age')}</label>
@@ -305,6 +321,11 @@ function OrganSheet({ t, state, actions, onClose, notify }) {
           onChange={(e) => setH({ ...h, creatinine: e.target.value })} />
       </div>
       <div className="field">
+        <label>{t('organ.crcl')}</label>
+        <input type="number" min="0.1" max="300" step="0.1" inputMode="decimal" value={h.crcl ?? ''}
+          onChange={(e) => setH({ ...h, crcl: e.target.value })} />
+      </div>
+      <div className="field">
         <label>{t('organ.sex')}</label>
         <select value={h.sex} onChange={(e) => setH({ ...h, sex: e.target.value })}>
           <option value="male">{t('organ.male')}</option>
@@ -318,7 +339,17 @@ function OrganSheet({ t, state, actions, onClose, notify }) {
           {h.liverDisease && <Icon name="check" />}
         </span>
       </button>
-      <button className="btn primary" onClick={() => { actions.setHealth(h); notify(t('meds.save')); onClose(); }}>
+      <button className="btn primary" onClick={() => {
+        const crcl = String(h.crcl ?? '').trim();
+        const value = Number(crcl);
+        if (crcl && (!Number.isFinite(value) || value <= 0 || value > 300)) {
+          notify(t('organ.invalidCrcl'));
+          return;
+        }
+        actions.setHealth(h);
+        notify(t('meds.save'));
+        onClose();
+      }}>
         {t('organ.run')}
       </button>
     </Sheet>

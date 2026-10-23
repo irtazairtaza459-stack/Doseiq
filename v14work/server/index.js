@@ -125,11 +125,12 @@ app.post('/api/safety/allergy', (req, res) => {
 app.post('/api/safety/review', (req, res) => {
   const drugs = asList(req.body?.drugs);
   if (!drugs.length) return bad(res, 400, 'drugs[] is required');
-  const interactions = drugs.length > 1 ? engine.checkInteractions(drugs) : { interactions: [], duplicates: [], unchecked: [], summary: { major: 0, moderate: 0, minor: 0 } };
+  const interactions = engine.checkInteractions(drugs);
   const allergy = engine.checkAllergies(drugs, asList(req.body?.allergies));
   const food = drugs.map((d) => engine.foodAdvice(d)).filter((f) => f && f.notes.length);
+  const incomplete = interactions.coverage !== 'complete';
   const risk = interactions.summary.major > 0 || allergy.alerts.some((a) => a.severity !== 'cross-low')
-    ? 'high' : interactions.summary.moderate > 0 || allergy.alerts.length ? 'medium' : 'low';
+    ? 'high' : interactions.summary.moderate > 0 || interactions.summary.minor > 0 || allergy.alerts.length ? 'medium' : incomplete ? 'unknown' : 'low';
   ok(res, { risk, interactions, allergy, food,
     escalate: risk === 'high' ? 'A pharmacist should review this combination before you continue.' : null });
 });
@@ -149,12 +150,18 @@ app.post('/api/price', (req, res) => {
   ok(res, r);
 });
 
-// Kidney/liver dose review. Estimates creatinine clearance when the inputs allow it.
+// Kidney/liver screen. Uses reported CrCl when present, otherwise estimates adult CrCl.
 app.post('/api/safety/organ', (req, res) => {
   const drugs = asList(req.body?.drugs);
   if (!drugs.length) return bad(res, 400, 'drugs[] is required');
-  const { age, weightKg, creatinine, sex, liverDisease } = req.body || {};
-  const kidney = engine.estimateKidney({ age, weightKg, creatinine, sex });
+  const { age, weightKg, creatinine, sex, crcl, liverDisease } = req.body || {};
+  if (crcl !== undefined && crcl !== null && String(crcl).trim() !== '') {
+    const reportedCrcl = Number(crcl);
+    if (!Number.isFinite(reportedCrcl) || reportedCrcl <= 0 || reportedCrcl > 300) {
+      return bad(res, 400, 'crcl must be a number between 0 and 300 mL/min');
+    }
+  }
+  const kidney = engine.estimateKidney({ age, weightKg, creatinine, sex, crcl });
   ok(res, engine.organReview(drugs, { kidney, liverDisease: !!liverDisease }));
 });
 

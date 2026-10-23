@@ -99,6 +99,17 @@ everywhere in Pakistan and in neither FDA nor DDInter, because neither is US-app
 Rather than show "no interactions found" — which reads as *safe* — those drugs are
 flagged as having limited data, and their clinical text was written by hand.
 
+**A green result is not shown for incomplete checks.** Interaction and organ-safety
+screens identify medicines without applicable local rules instead of treating them
+as clear. The kidney screen accepts a reported CrCl or estimates adult CrCl using
+Cockcroft–Gault from age, weight, serum creatinine and sex. BMI alone is not used as
+a kidney-function or dose measure. Amikacin has a sourced renal-monitoring alert;
+CrCl below 90 is a conservative app screening trigger, not a manufacturer dose
+cutoff. The app does not calculate its dose, serum levels, or hearing risk. See the
+[DailyMed amikacin label](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f260ff2a-76a0-4672-9516-91c344b67890).
+All alerts are screening prompts, not a diagnosis or a replacement for prescriber
+or pharmacist review.
+
 **Symptoms are triaged before they are explained.** A reported symptom is checked
 against emergency red flags first (swelling, breathing trouble, bleeding, jaundice)
 and only then against the drug's label. On a blood thinner, "bruising" escalates on

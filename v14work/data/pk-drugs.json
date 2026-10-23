@@ -349,6 +349,31 @@
     "interactionData": "ddinter"
   },
   {
+    "generic": "Amikacin",
+    "ddinter": "Amikacin",
+    "brands": [
+      "Amikin"
+    ],
+    "urdu": "امیکاسن",
+    "purposeEn": "Aminoglycoside antibiotic",
+    "purposeUr": "امینوگلیکوسائیڈ اینٹی بائیوٹک",
+    "class": "antibiotic",
+    "allergyGroup": "aminoglycoside",
+    "timing": "any",
+    "missedRule": "clinician",
+    "course": true,
+    "interactionData": "ddinter",
+    "renal": {
+      "adjustBelow": 90,
+      "note": "Amikacin is cleared by the kidneys. The official label advises renal monitoring and individualized dose adjustment when kidney function is impaired. CrCl below 90 is this app's conservative screening trigger, not a manufacturer dose cutoff. Contact the prescriber or pharmacist; this app cannot calculate an amikacin dose.",
+      "noteUr": "امیکاسن گردوں کے ذریعے خارج ہوتی ہے۔ سرکاری دوا کے لیبل کے مطابق گردوں کی خرابی میں ان کی نگرانی اور ہر مریض کے مطابق خوراک کی تبدیلی ضروری ہو سکتی ہے۔ 90 سے کم CrCl اس ایپ کا محتاط جانچ کا اشارہ ہے، دوا ساز کی خوراک کی حد نہیں۔ تجویز کنندہ یا فارماسسٹ سے رابطہ کریں؛ یہ ایپ امیکاسن کی خوراک طے نہیں کر سکتی۔",
+      "monitorNote": "Amikacin also needs clinician monitoring of kidney function and toxicity even when this CrCl screen is not low. This app does not assess serum drug levels or hearing.",
+      "monitorNoteUr": "CrCl کم نہ ہونے پر بھی امیکاسن کے دوران گردوں اور زہریلے اثرات کی طبی نگرانی ضروری ہے۔ یہ ایپ دوا کی خون میں سطح یا سماعت کی جانچ نہیں کرتی۔",
+      "source": "DailyMed: Amikacin Sulfate Injection, Sagent Pharmaceuticals",
+      "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f260ff2a-76a0-4672-9516-91c344b67890"
+    }
+  },
+  {
     "generic": "Ciprofloxacin",
     "ddinter": "Ciprofloxacin",
     "brands": [
