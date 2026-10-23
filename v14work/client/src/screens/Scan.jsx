@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { api } from '../api.js';
 import { Icon, Spinner, Lat } from '../ui.jsx';
 
@@ -222,8 +222,59 @@ export default function Scan({ t, lang, actions, notify, go }) {
   const [manualQuery, setManualQuery] = useState('');
   const [manualSearch, setManualSearch] = useState({ loading: false, results: [], error: '', searched: false });
   const [selectedMatch, setSelectedMatch] = useState(null);
+  const [cameraStream, setCameraStream] = useState(null);
   const fileRef = useRef(null);
-  const cameraRef = useRef(null);
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    if (!cameraStream || !videoRef.current) return undefined;
+    videoRef.current.srcObject = cameraStream;
+    return () => cameraStream.getTracks().forEach((track) => track.stop());
+  }, [cameraStream]);
+
+  const openCamera = async () => {
+    if (!navigator.mediaDevices?.getUserMedia) {
+      notify(t('scan.cameraUnsupported'));
+      return;
+    }
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({
+        audio: false,
+        video: { facingMode: { ideal: 'environment' } },
+      });
+      setCameraStream(stream);
+    } catch (err) {
+      console.error('Could not open camera:', err);
+      notify(err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError'
+        ? t('scan.cameraPermission')
+        : t('scan.cameraUnavailable'));
+    }
+  };
+
+  const capturePhoto = () => {
+    const video = videoRef.current;
+    if (!video?.videoWidth || !video.videoHeight) {
+      notify(t('scan.cameraUnavailable'));
+      return;
+    }
+    const canvas = document.createElement('canvas');
+    canvas.width = video.videoWidth;
+    canvas.height = video.videoHeight;
+    const context = canvas.getContext('2d');
+    if (!context) {
+      notify(t('common.error'));
+      return;
+    }
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+    canvas.toBlob((blob) => {
+      if (!blob) {
+        notify(t('common.error'));
+        return;
+      }
+      setCameraStream(null);
+      run(new File([blob], `prescription-${Date.now()}.jpg`, { type: 'image/jpeg' }));
+    }, 'image/jpeg', 0.92);
+  };
 
   const run = async (file) => {
     if (!file) return;
@@ -336,14 +387,21 @@ export default function Scan({ t, lang, actions, notify, go }) {
           <button className="btn primary" onClick={() => fileRef.current?.click()} disabled={busy}>
             <Icon name="scan" /> {t('scan.choose')}
           </button>
-          <button className="btn" onClick={() => cameraRef.current?.click()} disabled={busy}>
+          <button className="btn" onClick={openCamera} disabled={busy || !!cameraStream}>
             <Icon name="camera" /> {t('scan.camera')}
           </button>
         </div>
         <input ref={fileRef} type="file" accept="image/*" hidden
           onChange={(e) => run(e.target.files?.[0])} />
-        <input ref={cameraRef} type="file" accept="image/*" capture="environment" hidden
-          onChange={(e) => run(e.target.files?.[0])} />
+        {cameraStream && (
+          <div className="cameraCapture">
+            <video ref={videoRef} className="cameraPreview" autoPlay playsInline muted />
+            <div className="btnRow">
+              <button className="btn primary" onClick={capturePhoto}>{t('scan.capture')}</button>
+              <button className="btn" onClick={() => setCameraStream(null)}>{t('scan.cancelCamera')}</button>
+            </div>
+          </div>
+        )}
       </div>
 
       {preview && <img src={preview} alt="" className="scanPreview" />}
