@@ -21,49 +21,122 @@ function inferFrequency(line = '') {
   return m ? Math.max(1, Math.round(24 / Number(m[1]))) : 1;
 }
 
-/**
- * Prescriptions are photographed in poor light on cheap phones. Upscaling and
- * hard-thresholding the image lifts Tesseract's hit rate noticeably.
- */
-function preprocess(img, mode = 'adaptive') {
-  const scale = Math.min(3.2, Math.max(1.5, 2200 / img.naturalWidth));
-  const c = document.createElement('canvas');
-  c.width = Math.round(img.naturalWidth * scale);
-  c.height = Math.round(img.naturalHeight * scale);
-  const ctx = c.getContext('2d', { willReadFrequently: true });
+function prepareOcrImage(img) {
+  const longestSide = Math.max(img.naturalWidth, img.naturalHeight);
+  const scale = Math.min(2.5, 2400 / longestSide);
+  const canvas = document.createElement('canvas');
+  canvas.width = Math.max(1, Math.round(img.naturalWidth * scale));
+  canvas.height = Math.max(1, Math.round(img.naturalHeight * scale));
+  const ctx = canvas.getContext('2d');
+  if (!ctx) throw new Error('Could not prepare prescription image.');
   ctx.imageSmoothingEnabled = true;
   ctx.imageSmoothingQuality = 'high';
-  ctx.drawImage(img, 0, 0, c.width, c.height);
-  if (mode === 'color') return c;
+  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+  return canvas;
+}
 
-  const d = ctx.getImageData(0, 0, c.width, c.height);
-  const px = d.data;
-  let sum = 0;
-  for (let i = 0; i < px.length; i += 4) {
-    const lum = Math.round(px[i] * 0.299 + px[i + 1] * 0.587 + px[i + 2] * 0.114);
-    px[i] = px[i + 1] = px[i + 2] = lum;
-    sum += lum;
+function preprocess(source, mode = 'adaptive') {
+  if (mode === 'color') return source;
+
+  const canvas = document.createElement('canvas');
+  canvas.width = source.width;
+  canvas.height = source.height;
+  const ctx = canvas.getContext('2d', { willReadFrequently: true });
+  if (!ctx) throw new Error('Could not prepare prescription image.');
+  ctx.drawImage(source, 0, 0);
+
+  const image = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const pixels = image.data;
+  const width = canvas.width;
+  const height = canvas.height;
+  const count = width * height;
+  const gray = new Uint8Array(count);
+  const histogram = mode === 'threshold' ? new Uint32Array(256) : null;
+  let total = 0;
+
+  for (let pixel = 0, offset = 0; pixel < count; pixel += 1, offset += 4) {
+    const value = Math.round(pixels[offset] * 0.299 + pixels[offset + 1] * 0.587 + pixels[offset + 2] * 0.114);
+    gray[pixel] = value;
+    total += value;
+    if (histogram) histogram[value] += 1;
   }
-  const mean = sum / (px.length / 4);
-  for (let i = 0; i < px.length; i += 4) {
-    const v = px[i];
-    // Preserve pen strokes while suppressing yellow paper/background.
-    const out = mode === 'threshold'
-      ? (v < mean * 0.84 ? 0 : 255)
-      : Math.max(0, Math.min(255, (v - mean) * 1.85 + 150));
-    px[i] = px[i + 1] = px[i + 2] = out;
+
+  let threshold = total / count;
+  if (histogram) {
+    let backgroundWeight = 0;
+    let backgroundSum = 0;
+    let bestVariance = -1;
+    for (let value = 0; value < histogram.length; value += 1) {
+      backgroundWeight += histogram[value];
+      if (!backgroundWeight) continue;
+      const foregroundWeight = count - backgroundWeight;
+      if (!foregroundWeight) break;
+      backgroundSum += value * histogram[value];
+      const backgroundMean = backgroundSum / backgroundWeight;
+      const foregroundMean = (total - backgroundSum) / foregroundWeight;
+      const variance = backgroundWeight * foregroundWeight * (backgroundMean - foregroundMean) ** 2;
+      if (variance > bestVariance) {
+        bestVariance = variance;
+        threshold = value;
+      }
+    }
   }
-  ctx.putImageData(d, 0, 0);
-  return c;
+
+  let integral;
+  const stride = width + 1;
+  if (mode === 'adaptive') {
+    integral = new Uint32Array(stride * (height + 1));
+    for (let y = 1; y <= height; y += 1) {
+      let rowSum = 0;
+      const row = (y - 1) * width;
+      const current = y * stride;
+      const previous = (y - 1) * stride;
+      for (let x = 1; x <= width; x += 1) {
+        rowSum += gray[row + x - 1];
+        integral[current + x] = integral[previous + x] + rowSum;
+      }
+    }
+  }
+
+  for (let y = 0, offset = 0; y < height; y += 1) {
+    for (let x = 0; x < width; x += 1, offset += 4) {
+      const index = y * width + x;
+      const value = gray[index];
+      let output;
+      if (mode === 'threshold') {
+        output = value < threshold ? 0 : 255;
+      } else if (mode === 'adaptive') {
+        const left = Math.max(0, x - 24);
+        const top = Math.max(0, y - 24);
+        const right = Math.min(width, x + 25);
+        const bottom = Math.min(height, y + 25);
+        const area = (right - left) * (bottom - top);
+        const sum = integral[bottom * stride + right] - integral[top * stride + right]
+          - integral[bottom * stride + left] + integral[top * stride + left];
+        output = value < sum / area - 9 ? 0 : 255;
+      } else if (mode === 'sharpen') {
+        const left = gray[y * width + Math.max(0, x - 1)];
+        const right = gray[y * width + Math.min(width - 1, x + 1)];
+        const above = gray[Math.max(0, y - 1) * width + x];
+        const below = gray[Math.min(height - 1, y + 1) * width + x];
+        output = Math.max(0, Math.min(255, Math.round(value * 1.5 - (left + right + above + below) * 0.125)));
+      } else {
+        output = Math.max(0, Math.min(255, Math.round((value - 128) * 1.55 + 145)));
+      }
+      pixels[offset] = pixels[offset + 1] = pixels[offset + 2] = output;
+    }
+  }
+
+  ctx.putImageData(image, 0, 0);
+  return canvas;
 }
 
 function cropMedicineZone(canvas) {
-  // Many prescriptions put the medicine list in the central/right 3/4. Keep
-  // this as an additional OCR view rather than replacing the full-page pass.
-  const x = Math.round(canvas.width * 0.17);
-  const y = Math.round(canvas.height * 0.18);
-  const w = Math.round(canvas.width * 0.79);
-  const h = Math.round(canvas.height * 0.56);
+  // Keep a broad overlapping crop as an additional OCR view; layouts vary.
+  const x = Math.round(canvas.width * 0.04);
+  const y = Math.round(canvas.height * 0.08);
+  const w = Math.round(canvas.width * 0.92);
+  const h = Math.round(canvas.height * 0.82);
   const c = document.createElement('canvas');
   c.width = w; c.height = h;
   const ctx = c.getContext('2d');
@@ -73,29 +146,39 @@ function cropMedicineZone(canvas) {
 
 
 async function handwritingOcr(img, setProgress) {
+  const source = prepareOcrImage(img);
+
   if (!window.Tesseract?.createWorker) {
-    const fallback = await window.Tesseract.recognize(preprocess(img, 'adaptive'), 'eng', {
+    const fallback = await window.Tesseract.recognize(preprocess(source, 'adaptive'), 'eng', {
       logger: (m) => m.status === 'recognizing text' && setProgress(Math.round(m.progress * 40)),
     });
     return fallback.data?.text || '';
   }
 
-  const worker = await window.Tesseract.createWorker('eng', 1, {
-    logger: (m) => {
-      if (m.status === 'recognizing text') setProgress(Math.min(95, Math.round(m.progress * 20)));
-    },
-  });
   const jobs = [
     { mode: 'color', psm: '11', crop: false },
+    { mode: 'contrast', psm: '6', crop: false },
     { mode: 'adaptive', psm: '6', crop: false },
     { mode: 'adaptive', psm: '11', crop: true },
-    { mode: 'threshold', psm: '11', crop: true },
+    { mode: 'adaptive', psm: '12', crop: true },
+    { mode: 'threshold', psm: '6', crop: true },
+    { mode: 'sharpen', psm: '11', crop: true },
   ];
-  const texts = [];
+  let activeJob = 0;
+  const worker = await window.Tesseract.createWorker('eng', 1, {
+    logger: (m) => {
+      if (m.status === 'recognizing text') {
+        setProgress(Math.min(95, Math.round(((activeJob + m.progress) / jobs.length) * 92)));
+      }
+    },
+  });
+  const observations = new Map();
+
   try {
     for (let i = 0; i < jobs.length; i += 1) {
+      activeJob = i;
       const job = jobs[i];
-      const base = preprocess(img, job.mode);
+      const base = preprocess(source, job.mode);
       const canvas = job.crop ? cropMedicineZone(base) : base;
       await worker.setParameters({
         tessedit_pageseg_mode: job.psm,
@@ -103,13 +186,30 @@ async function handwritingOcr(img, setProgress) {
         user_defined_dpi: '300',
       });
       const { data } = await worker.recognize(canvas);
-      if (data.text?.trim()) texts.push(data.text.trim());
+      const confidence = Number.isFinite(data.confidence) ? data.confidence : 0;
+      for (const line of (data.text || '').split(/\r?\n/).map((value) => value.trim()).filter((value) => value.length > 2)) {
+        const key = line.toLowerCase().replace(/[^a-z0-9]+/g, '');
+        if (!key) continue;
+        const current = observations.get(key);
+        if (current) {
+          current.votes += 1;
+          if (confidence > current.confidence) {
+            current.confidence = confidence;
+            current.text = line;
+          }
+        } else {
+          observations.set(key, { text: line, votes: 1, confidence, order: observations.size });
+        }
+      }
       setProgress(Math.round(((i + 1) / jobs.length) * 92));
     }
   } finally {
     await worker.terminate();
   }
-  return texts.join('\n');
+  return [...observations.values()]
+    .sort((a, b) => b.votes - a.votes || b.confidence - a.confidence || a.order - b.order)
+    .map(({ text }) => text)
+    .join('\n');
 }
 
 export default function Scan({ t, lang, actions, notify, go }) {
@@ -119,6 +219,9 @@ export default function Scan({ t, lang, actions, notify, go }) {
   const [raw, setRaw] = useState('');
   const [items, setItems] = useState(null);
   const [prescription, setPrescription] = useState(null);
+  const [manualQuery, setManualQuery] = useState('');
+  const [manualSearch, setManualSearch] = useState({ loading: false, results: [], error: '', searched: false });
+  const [selectedMatch, setSelectedMatch] = useState(null);
   const fileRef = useRef(null);
   const cameraRef = useRef(null);
 
@@ -126,6 +229,9 @@ export default function Scan({ t, lang, actions, notify, go }) {
     if (!file) return;
     if (!window.Tesseract) { notify(t('common.error')); return; }
     setBusy(true); setItems(null); setPrescription(null); setRaw(''); setProgress(0);
+    setManualQuery('');
+    setManualSearch({ loading: false, results: [], error: '', searched: false });
+    setSelectedMatch(null);
     const url = URL.createObjectURL(file);
     setPreview(url);
     try {
@@ -165,6 +271,45 @@ export default function Scan({ t, lang, actions, notify, go }) {
     }
   };
 
+  const searchLocalMedicine = async (event) => {
+    event.preventDefault();
+    const term = manualQuery.trim();
+    if (term.length < 2 || manualSearch.loading) return;
+
+    setManualSearch({ loading: true, results: [], error: '', searched: true });
+    setSelectedMatch(null);
+    try {
+      const result = await api.match(term, 20);
+      setManualSearch({
+        loading: false,
+        results: (result.candidates || [])
+          .filter((candidate) => !candidate.global && candidate.confidence >= 0.5)
+          .slice(0, 5),
+        error: '',
+        searched: true,
+      });
+    } catch (err) {
+      console.error(err);
+      setManualSearch({
+        loading: false,
+        results: [],
+        error: lang === 'ur' ? 'مقامی دوا کی فہرست دستیاب نہیں۔ دوبارہ کوشش کریں۔' : 'The local medicine catalogue could not be reached. Please try again.',
+        searched: true,
+      });
+    }
+  };
+
+  const selectLocalMedicine = async (candidate) => {
+    setSelectedMatch({ loading: true, candidate, drug: null });
+    try {
+      const result = await api.drug(candidate.generic);
+      setSelectedMatch({ loading: false, candidate, drug: result.drug });
+    } catch (err) {
+      console.error(err);
+      setSelectedMatch({ loading: false, candidate, drug: null, error: true });
+    }
+  };
+
   const addAll = () => {
     const keep = items.filter((i) => !i.dismissed);
     if (!keep.length) return;
@@ -182,6 +327,11 @@ export default function Scan({ t, lang, actions, notify, go }) {
       <div className="card">
         <h2>{t('scan.title')}</h2>
         <p>{t('scan.help')}</p>
+        <p className="muted" style={{ marginTop: 6 }}>
+          {lang === 'ur'
+            ? 'بہتر اسکین کے لیے پورا نسخہ فریم میں رکھیں، کیمرہ سیدھا رکھیں، روشنی اچھی ہو اور تصویر دھندلی یا چمک والی نہ ہو۔'
+            : 'For a clearer scan, keep the whole prescription in frame, hold the camera straight, use even light, and avoid blur or glare.'}
+        </p>
         <div className="btnRow" style={{ marginTop: 12 }}>
           <button className="btn primary" onClick={() => fileRef.current?.click()} disabled={busy}>
             <Icon name="scan" /> {t('scan.choose')}
@@ -207,9 +357,11 @@ export default function Scan({ t, lang, actions, notify, go }) {
 
       {items && items.length === 0 && preview && !busy && (
         <div className="card handwriting-assist-card">
-          <b>{lang === 'ur' ? 'دوا کا نام دستی طور پر درست کریں' : 'Correct the medicine text'}</b>
+          <b>{lang === 'ur' ? 'اس تصویر سے دوا کا نام یقینی طور پر نہیں پڑھا جا سکا' : 'The medicine name could not be read reliably from this image'}</b>
           <p className="muted" style={{ marginTop: 6 }}>
-            {lang === 'ur' ? 'یہ اسکین آپ کے آلے پر چلتا ہے۔ OCR متن درست کریں، پھر مقامی دوا کیٹلاگ میں دوبارہ تلاش کریں۔' : 'Scanning stays on your device. Correct the OCR text, then search the local medicine catalogue again.'}
+            {lang === 'ur'
+              ? 'دوا کے نام والی سطر صرف OCR متن کے بجائے نیچے مقامی فہرست میں تلاش کریں، یا زیادہ قریب سے صاف اور روشن تصویر لیں۔'
+              : 'Handwriting can be misread by offline OCR. Type the medicine name as best you can in the local catalogue search below, or retake a clear, well-lit photo of just the prescription.'}
           </p>
         </div>
       )}
@@ -222,6 +374,67 @@ export default function Scan({ t, lang, actions, notify, go }) {
           <button className="btn" style={{ marginTop: 10 }} onClick={rematchEditedText} disabled={busy || !raw.trim()}>
             <Icon name="scan" /> {lang === 'ur' ? 'مقامی کیٹلاگ میں دوبارہ تلاش کریں' : 'Match against local catalogue'}
           </button>
+        </div>
+      )}
+
+      {items && items.length === 0 && preview && !busy && (
+        <div className="card">
+          <h2>{lang === 'ur' ? 'دوا کا نام خود تلاش کریں' : 'Look up the medicine name'}</h2>
+          <p className="muted" style={{ marginTop: 6 }}>{lang === 'ur'
+            ? 'نسخے پر لکھا نام جتنا سمجھ آئے ٹائپ کریں۔ یہ تلاش اسی دوا کی مقامی فہرست میں ہوگی۔'
+            : 'Type the medicine or brand name as best you can. This searches the built-in medicine catalogue only.'}</p>
+          <form onSubmit={searchLocalMedicine}>
+            <input
+              value={manualQuery}
+              onChange={(event) => {
+                setManualQuery(event.target.value);
+                setManualSearch({ loading: false, results: [], error: '', searched: false });
+                setSelectedMatch(null);
+              }}
+              placeholder={lang === 'ur' ? 'مثلاً دوا یا برانڈ کا نام' : 'Medicine or brand name'}
+              aria-label={lang === 'ur' ? 'دوا کا نام' : 'Medicine name'}
+              minLength={2}
+            />
+            <button className="btn primary" style={{ marginTop: 10 }} type="submit"
+              disabled={manualQuery.trim().length < 2 || manualSearch.loading}>
+              {manualSearch.loading ? (lang === 'ur' ? 'تلاش ہو رہی ہے…' : 'Searching…') : (lang === 'ur' ? 'دوا تلاش کریں' : 'Search medicines')}
+            </button>
+          </form>
+          {manualSearch.error && <p role="alert" className="muted" style={{ marginTop: 10 }}>{manualSearch.error}</p>}
+          {!manualSearch.loading && manualSearch.results.length > 0 && (
+            <div style={{ marginTop: 12 }}>
+              <p className="muted">{lang === 'ur' ? 'ممکنہ نام — اصل نسخے سے ضرور ملائیں:' : 'Possible catalogue matches — verify the name against the original:'}</p>
+              {manualSearch.results.map((candidate) => (
+                <button key={candidate.generic} className="medicine-search-result" style={{ width: '100%', marginTop: 8 }}
+                  onClick={() => selectLocalMedicine(candidate)}>
+                  <span><strong><Lat>{candidate.brand || candidate.matchedOn || candidate.generic}</Lat></strong>
+                    <small><Lat>{candidate.generic}</Lat> · {Math.round(candidate.confidence * 100)}% text match</small></span>
+                  <span>{lang === 'ur' ? 'تفصیل' : 'Details'}</span>
+                </button>
+              ))}
+            </div>
+          )}
+          {!manualSearch.loading && manualSearch.searched && manualSearch.results.length === 0 && !manualSearch.error && (
+            <p className="muted" style={{ marginTop: 10 }}>{lang === 'ur'
+              ? 'مقامی فہرست میں مماثل دوا نہیں ملی۔ نام کی دوسری املا آزمائیں یا فارماسسٹ سے پوچھیں۔'
+              : 'No close match in the local catalogue. Try another spelling or ask a pharmacist to read the prescription.'}</p>
+          )}
+          {selectedMatch && (
+            <div className="card" style={{ marginTop: 12 }}>
+              {selectedMatch.loading ? <Spinner /> : selectedMatch.error ? (
+                <p role="alert" className="muted">{t('common.error')}</p>
+              ) : selectedMatch.drug ? (
+                <>
+                  <h2><Lat>{selectedMatch.drug.generic}</Lat></h2>
+                  <p style={{ marginTop: 6 }}>{lang === 'ur' ? selectedMatch.drug.purposeUr : selectedMatch.drug.purposeEn}</p>
+                  {selectedMatch.candidate.brand && <p className="muted" style={{ marginTop: 6 }}>{lang === 'ur' ? 'ممکنہ برانڈ:' : 'Possible brand:'} <Lat>{selectedMatch.candidate.brand}</Lat></p>}
+                  <p className="muted" style={{ marginTop: 8 }}>{lang === 'ur'
+                    ? 'یہ صرف نام کی مقامی فہرست سے مماثلت ہے، نسخے کی تصدیق نہیں۔ خوراک اور اوقات اصل نسخے یا فارماسسٹ سے معلوم کریں۔'
+                    : 'This is a name match from the local catalogue, not confirmation of the prescription. Get the dose and schedule from the original or a pharmacist.'}</p>
+                </>
+              ) : null}
+            </div>
+          )}
         </div>
       )}
 

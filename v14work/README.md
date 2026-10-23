@@ -1,6 +1,6 @@
 
 ### Prescription scanning
-Prescription images are processed in the browser with Tesseract.js; no AI API key or paid vision service is required. Printed text is usually easier to recognize than handwriting. Review and correct the OCR text, match it against the local medicine catalogue, and confirm every medicine, dose, and instruction against the original prescription before saving.
+Prescription images are processed in the browser with Tesseract.js; no AI model installation, paid credits, or external service is needed. The scanner now tries several image enhancements and text layouts to improve recognition in blur, uneven lighting, and low contrast. Handwritten medicine names may still be unreadable: review or correct the OCR text, then search the built-in catalogue. Catalogue suggestions are not confirmation of what the doctor wrote; verify every medicine, strength, and instruction against the original or ask a pharmacist.
 
 # DoseIQ — Medication safety for Pakistan
 
@@ -65,8 +65,10 @@ false positives:   0
 correctly found:   3/50  (6%)
 ```
 
-That 6% is honest and it is the known limitation: Tesseract is trained on printed
-text and cannot read cursive. Two things follow from it, and both are built in:
+That 6% is from the earlier OCR pipeline. The expanded image-enhancement pipeline
+has not yet been re-evaluated on this labelled handwriting set. Tesseract is
+trained primarily on printed text and remains unreliable on cursive. Two things
+follow from that limitation, and both are built in:
 
 - Every scanned line must be confirmed by the patient before it is saved, with the
   confidence score shown and alternative candidates offered.
