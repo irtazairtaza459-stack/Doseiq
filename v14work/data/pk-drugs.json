@@ -420,6 +420,77 @@
     }
   },
   {
+    "generic": "Streptomycin",
+    "ddinter": "Streptomycin",
+    "brands": [],
+    "urdu": "سٹریپٹومائسن",
+    "purposeEn": "Aminoglycoside antibiotic",
+    "purposeUr": "امینوگلیکوسائیڈ اینٹی بائیوٹک",
+    "class": "antibiotic",
+    "allergyGroup": "aminoglycoside",
+    "timing": "any",
+    "missedRule": "clinician",
+    "course": true,
+    "interactionData": "ddinter",
+    "renal": {
+      "adjustBelow": 90,
+      "note": "Systemic streptomycin requires close renal monitoring, and its official label advises reduced doses in renal impairment. CrCl below 90 is this app's conservative screening trigger, not a manufacturer dose cutoff. Confirm the formulation and contact the prescriber or pharmacist; this app cannot calculate a dose.",
+      "noteUr": "جسم میں دی جانے والی سٹریپٹومائسن کے لیے گردوں کی قریبی نگرانی ضروری ہے، اور سرکاری لیبل گردوں کی خرابی میں کم خوراک کا مشورہ دیتا ہے۔ 90 سے کم CrCl اس ایپ کا محتاط جانچ کا اشارہ ہے، دوا ساز کی خوراک کی حد نہیں۔ دوا کی قسم کی تصدیق کرکے تجویز کنندہ یا فارماسسٹ سے رابطہ کریں؛ یہ ایپ خوراک طے نہیں کر سکتی۔",
+      "monitorNote": "Systemic streptomycin needs clinician monitoring for kidney and hearing toxicity even when this CrCl screen is not low. Route matters; this app does not assess serum drug levels or hearing.",
+      "monitorNoteUr": "جسم میں دی جانے والی سٹریپٹومائسن کے لیے CrCl کم نہ ہونے پر بھی گردوں اور سماعت پر ممکنہ زہریلے اثرات کی طبی نگرانی ضروری ہے۔ دوا دینے کا طریقہ اہم ہے؛ یہ ایپ خون میں دوا کی سطح یا سماعت نہیں جانچتی۔",
+      "source": "DailyMed: Streptomycin for Injection, XGen Pharmaceuticals",
+      "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=abd1f64e-4283-4370-aae8-3666316aa36e"
+    }
+  },
+  {
+    "generic": "Plazomicin",
+    "ddinter": "Plazomicin",
+    "brands": [
+      "Zemdri"
+    ],
+    "urdu": "پلازومائسن",
+    "purposeEn": "Aminoglycoside antibiotic",
+    "purposeUr": "امینوگلیکوسائیڈ اینٹی بائیوٹک",
+    "class": "antibiotic",
+    "allergyGroup": "aminoglycoside",
+    "timing": "any",
+    "missedRule": "clinician",
+    "course": true,
+    "interactionData": "ddinter",
+    "renal": {
+      "adjustBelow": 90,
+      "note": "Plazomicin requires creatinine-clearance assessment before and during treatment. Its label recommends initial dose-regimen adjustment for CrCl 15–59 mL/min and therapeutic drug monitoring below 90 mL/min. CrCl below 90 is this app's review trigger; it does not calculate a dose or therapeutic drug levels. Contact the prescriber or pharmacist.",
+      "noteUr": "پلازومائسن کے علاج سے پہلے اور دورانِ علاج کریٹینین کلیئرنس کی جانچ ضروری ہے۔ سرکاری لیبل 15–59 mL/min CrCl پر ابتدائی خوراک کے طریقے میں تبدیلی اور 90 سے کم CrCl پر دوا کی خون میں سطح کی نگرانی کا مشورہ دیتا ہے۔ 90 سے کم CrCl اس ایپ میں طبی جائزے کا اشارہ ہے؛ ایپ خوراک یا خون میں دوا کی سطح طے نہیں کرتی۔ تجویز کنندہ یا فارماسسٹ سے رابطہ کریں۔",
+      "monitorNote": "Plazomicin requires clinician assessment of kidney function and treatment monitoring even when this CrCl screen is not low. This app does not assess serum drug levels or hearing.",
+      "monitorNoteUr": "CrCl کم نہ ہونے پر بھی پلازومائسن کے لیے گردوں اور علاج کی طبی نگرانی ضروری ہے۔ یہ ایپ خون میں دوا کی سطح یا سماعت کی جانچ نہیں کرتی۔",
+      "source": "DailyMed: ZEMDRI (Plazomicin) Injection",
+      "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=eccf9fd9-53ac-4252-a106-5567b3a82a70"
+    }
+  },
+  {
+    "generic": "Neomycin",
+    "ddinter": "Neomycin",
+    "brands": [],
+    "urdu": "نیومائسن",
+    "purposeEn": "Oral aminoglycoside antibiotic",
+    "purposeUr": "منہ سے لی جانے والی امینوگلیکوسائیڈ اینٹی بائیوٹک",
+    "class": "antibiotic",
+    "allergyGroup": "aminoglycoside",
+    "timing": "any",
+    "missedRule": "clinician",
+    "course": true,
+    "interactionData": "ddinter",
+    "renal": {
+      "adjustBelow": 90,
+      "note": "The oral neomycin label reports nephrotoxicity and says the risk is greater with impaired renal function. CrCl below 90 is this app's conservative screening trigger, not a label dose cutoff. Verify the formulation because topical and ear products differ; contact the prescriber or pharmacist. This app cannot calculate a dose.",
+      "noteUr": "منہ سے لی جانے والی نیومائسن کے سرکاری لیبل میں گردوں کو نقصان پہنچنے کی اطلاع ہے اور گردوں کی خرابی میں خطرہ زیادہ بتایا گیا ہے۔ 90 سے کم CrCl اس ایپ کا محتاط جانچ کا اشارہ ہے، لیبل کی خوراک کی حد نہیں۔ دوا کی قسم کی تصدیق کریں کیونکہ جلد یا کان پر لگانے والی دوا مختلف ہے؛ تجویز کنندہ یا فارماسسٹ سے رابطہ کریں۔ یہ ایپ خوراک طے نہیں کر سکتی۔",
+      "monitorNote": "The oral neomycin label advises clinical monitoring for kidney and hearing toxicity, including in patients with normal renal function. This alert is based on oral use; verify the formulation. This app does not assess serum drug levels or hearing.",
+      "monitorNoteUr": "منہ سے لی جانے والی نیومائسن کے لیبل کے مطابق گردوں اور سماعت پر زہریلے اثرات کی طبی نگرانی ضروری ہے، چاہے گردوں کی کارکردگی معمول پر ہو۔ یہ اطلاع منہ سے لی جانے والی دوا کے لیے ہے؛ دوا کی قسم کی تصدیق کریں۔ یہ ایپ خون میں دوا کی سطح یا سماعت نہیں جانچتی۔",
+      "source": "DailyMed: Neomycin Sulfate Tablets, Teva",
+      "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=777dbfab-f83e-4738-ae1e-78619a9f82a7"
+    }
+  },
+  {
     "generic": "Ciprofloxacin",
     "ddinter": "Ciprofloxacin",
     "brands": [

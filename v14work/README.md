@@ -103,14 +103,19 @@ flagged as having limited data, and their clinical text was written by hand.
 screens identify medicines without applicable local rules instead of treating them
 as clear. The kidney screen accepts a reported CrCl or estimates adult CrCl using
 Cockcroft–Gault from age, weight, serum creatinine and sex. BMI alone is not used as
-a kidney-function or dose measure. Amikacin, gentamicin and tobramycin have sourced
-renal-monitoring alerts. CrCl below 90 is a conservative app screening trigger,
-not a manufacturer dose cutoff. These labels concern systemic formulations; route
-must be confirmed with a clinician. The app does not calculate doses or assess
-serum levels or hearing risk. See the DailyMed labels for
+a kidney-function or dose measure. Amikacin, gentamicin, tobramycin, streptomycin,
+plazomicin and oral neomycin have sourced renal-monitoring alerts. CrCl below 90 is
+a conservative app screening trigger, not a universal manufacturer dose cutoff;
+plazomicin's label specifically recommends therapeutic drug monitoring below 90
+and initial regimen adjustment below 60. These alerts are based on systemic or
+oral product labels; route must be confirmed with a clinician. The app does not
+calculate doses or assess serum levels or hearing risk. See the DailyMed labels for
 [amikacin](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f260ff2a-76a0-4672-9516-91c344b67890),
 [gentamicin](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=449c9a41-d61e-49fd-b5e3-d76f74b92acf)
-and [tobramycin](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ac8134d9-a726-4508-b8b9-a536ef17243d).
+and [tobramycin](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ac8134d9-a726-4508-b8b9-a536ef17243d),
+[streptomycin](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=abd1f64e-4283-4370-aae8-3666316aa36e)
+and [plazomicin](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=eccf9fd9-53ac-4252-a106-5567b3a82a70),
+plus [oral neomycin](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=777dbfab-f83e-4738-ae1e-78619a9f82a7).
 All alerts are screening prompts, not a diagnosis or a replacement for prescriber
 or pharmacist review.
 

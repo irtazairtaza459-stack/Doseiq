@@ -43,14 +43,14 @@ test('shows amikacin monitoring guidance even without a low CrCl result', () => 
 });
 
 test('screens systemic aminoglycosides for renal risk without calculating doses', () => {
-  for (const generic of ['Amikacin', 'Gentamicin', 'Tobramycin']) {
+  for (const generic of ['Amikacin', 'Gentamicin', 'Tobramycin', 'Streptomycin', 'Plazomicin', 'Neomycin']) {
     const reduced = organReview([generic], { kidney: { crcl: 45, stage: 'moderate' } });
     const normal = organReview([generic], { kidney: { crcl: 100, stage: 'normal' } });
     const missing = organReview([generic]);
 
     assert.equal(reduced.flags[0].drug, generic);
     assert.equal(reduced.flags[0].level, 'adjust');
-    assert.match(reduced.flags[0].message, /cannot calculate .* dose/i);
+    assert.match(reduced.flags[0].message, /(cannot calculate|does not calculate).*dose/i);
     assert.match(reduced.flags[0].sourceUrl, /dailymed\.nlm\.nih\.gov/);
     assert.equal(normal.flags[0].level, 'caution');
     assert.equal(missing.flags[0].level, 'caution');
@@ -82,8 +82,11 @@ test('checks Amikacin interaction pairs in the local DDInter dataset', () => {
 });
 
 test('recognizes named aminoglycosides in interaction checks', () => {
-  const result = checkInteractions(['Gentamicin', 'Tobramycin']);
+  const result = checkInteractions(['Amikacin', 'Gentamicin', 'Tobramycin', 'Streptomycin', 'Plazomicin', 'Neomycin']);
   assert.equal(result.coverage, 'complete');
-  assert.equal(result.summary.checkedPairs, 1);
-  assert.deepEqual(result.duplicates, [{ group: 'aminoglycoside', drugs: ['Gentamicin', 'Tobramycin'] }]);
+  assert.equal(result.summary.checkedPairs, 15);
+  assert.deepEqual(result.duplicates, [{
+    group: 'aminoglycoside',
+    drugs: ['Amikacin', 'Gentamicin', 'Tobramycin', 'Streptomycin', 'Plazomicin', 'Neomycin'],
+  }]);
 });
