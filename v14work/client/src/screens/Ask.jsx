@@ -18,11 +18,11 @@ export default function Ask({ t, lang, notify }) {
 
   useEffect(() => { endRef.current?.scrollIntoView({ behavior: 'smooth' }); }, [msgs, busy]);
 
-  const speak = (answer, answerUr) => {
+  const speak = (answer, answerUr, answerRomanUrdu, answerLanguage) => {
     if (!window.speechSynthesis) return;
-    const say = lang === 'ur' ? answerUr : answer;
+    const say = answerLanguage === 'ur' ? answerUr : answerLanguage === 'roman' ? answerRomanUrdu : answer;
     const u = new SpeechSynthesisUtterance(say);
-    u.lang = lang === 'ur' ? 'ur-PK' : 'en-GB';
+    u.lang = answerLanguage === 'ur' ? 'ur-PK' : answerLanguage === 'roman' ? 'en-PK' : 'en-GB';
     u.rate = 0.95;
     window.speechSynthesis.cancel();
     window.speechSynthesis.speak(u);
@@ -36,8 +36,9 @@ export default function Ask({ t, lang, notify }) {
     setBusy(true);
     try {
       const r = await api.ask(q);
-      const shown = lang === 'ur' ? r.answerUr : r.answer;
-      setMsgs((m) => [...m, { who: 'bot', text: shown, en: r.answer, ur: r.answerUr, drug: r.drug, global: r.global, severity: r.severity, sources: r.sources }]);
+      const answerLanguage = r.answerLanguage || (lang === 'ur' ? 'ur' : 'en');
+      const shown = answerLanguage === 'ur' ? r.answerUr : answerLanguage === 'roman' ? r.answerRomanUrdu : r.answer;
+      setMsgs((m) => [...m, { who: 'bot', text: shown, en: r.answer, ur: r.answerUr, romanUrdu: r.answerRomanUrdu, answerLanguage, drug: r.drug, global: r.global, severity: r.severity, sources: r.sources }]);
     } catch {
       setMsgs((m) => [...m, { who: 'bot', text: t('common.error') }]);
     } finally { setBusy(false); }
@@ -99,7 +100,7 @@ export default function Ask({ t, lang, notify }) {
             )}
             {m.who === 'bot' && m.en ? (lang === 'ur' ? m.ur : m.en) : m.text}
             {m.who === 'bot' && m.drug && (
-              <button className="btn sm" style={{ marginTop: 8 }} onClick={() => speak(m.en, m.ur)}>
+              <button className="btn sm" style={{ marginTop: 8 }} onClick={() => speak(m.en, m.ur, m.romanUrdu, m.answerLanguage)}>
                 <Icon name="speaker" /> {t('ask.listen')}
               </button>
             )}

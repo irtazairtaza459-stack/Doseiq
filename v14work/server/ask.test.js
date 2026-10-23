@@ -23,6 +23,42 @@ test('answers natural-language doxycycline milk questions from the local medicin
   assert.match(result.sources[0].url, /dailymed\.nlm\.nih\.gov/);
 });
 
+test('answers Roman Urdu questions in Roman Urdu regardless of app language', async (t) => {
+  const server = app.listen(0, '127.0.0.1');
+  t.after(() => new Promise((resolve) => server.close(resolve)));
+  await new Promise((resolve) => server.once('listening', resolve));
+  const { port } = server.address();
+
+  const response = await fetch(`http://127.0.0.1:${port}/api/ask`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ question: 'kia main Doxycycline doodh ke sath le sakta hon?' }),
+  });
+  const result = await response.json();
+
+  assert.equal(result.answerLanguage, 'roman');
+  assert.match(result.answerRomanUrdu, /Doxycycline products ke official label/i);
+  assert.match(result.answerRomanUrdu, /doodh/i);
+});
+
+test('answers Urdu-script questions in Urdu and English questions in English', async (t) => {
+  const server = app.listen(0, '127.0.0.1');
+  t.after(() => new Promise((resolve) => server.close(resolve)));
+  await new Promise((resolve) => server.once('listening', resolve));
+  const { port } = server.address();
+  const ask = async (question) => {
+    const response = await fetch(`http://127.0.0.1:${port}/api/ask`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ question }),
+    });
+    return response.json();
+  };
+
+  assert.equal((await ask('کیا میں Doxycycline دودھ کے ساتھ لے سکتا ہوں؟')).answerLanguage, 'ur');
+  assert.equal((await ask('Can I take Doxycycline with milk?')).answerLanguage, 'en');
+});
+
 test('checks all named medicines in natural-language interaction questions', async (t) => {
   const server = app.listen(0, '127.0.0.1');
   t.after(() => new Promise((resolve) => server.close(resolve)));
@@ -41,4 +77,23 @@ test('checks all named medicines in natural-language interaction questions', asy
   assert.equal(result.severity, 'major');
   assert.match(result.answer, /potentially serious interaction/i);
   assert.match(result.answer, /Milk does not remove or prevent/i);
+});
+
+test('answers Roman Urdu medicine-interaction questions in Roman Urdu', async (t) => {
+  const server = app.listen(0, '127.0.0.1');
+  t.after(() => new Promise((resolve) => server.close(resolve)));
+  await new Promise((resolve) => server.once('listening', resolve));
+  const { port } = server.address();
+
+  const response = await fetch(`http://127.0.0.1:${port}/api/ask`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ question: 'kia main Warfarin aur Aspirin sath le sakta hon?' }),
+  });
+  const result = await response.json();
+
+  assert.equal(result.answerLanguage, 'roman');
+  assert.equal(result.severity, 'major');
+  assert.match(result.answerRomanUrdu, /sanjeeda interaction/i);
+  assert.match(result.answerRomanUrdu, /doctor ya pharmacist se rabta karein/i);
 });

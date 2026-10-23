@@ -17,6 +17,17 @@ app.use(express.json({ limit: '10mb' }));
 const ok = (res, body) => res.json({ ok: true, ...body });
 const bad = (res, code, msg) => res.status(code).json({ ok: false, error: msg });
 const asList = (v) => (Array.isArray(v) ? v : typeof v === 'string' ? [v] : []);
+function questionLanguage(question) {
+  if (/[\u0600-\u06ff]/.test(question)) return 'ur';
+  const tokens = String(question).toLowerCase().replace(/[^a-z0-9]+/g, ' ').split(/\s+/);
+  const romanUrduMarkers = new Set([
+    'kia', 'kiya', 'kya', 'main', 'mein', 'mujhe', 'mera', 'meri', 'ko', 'ke',
+    'ka', 'ki', 'sath', 'saath', 'lon', 'loon', 'leni', 'lena', 'hai', 'hain',
+    'kab', 'kyun', 'aur', 'dawa', 'dawai', 'sakta', 'sakti', 'nahi', 'nahin',
+    'karo', 'karun', 'chahiye', 'raha', 'rahi', 'lo',
+  ]);
+  return tokens.some((token) => romanUrduMarkers.has(token)) ? 'roman' : 'en';
+}
 const inferIntervalHours = (line = '') => {
   const m = String(line).toLowerCase().match(/every\s+(\d{1,2})\s*hours?/);
   return m ? Number(m[1]) : null;
@@ -217,42 +228,56 @@ app.get('/api/global/search', async (req, res) => {
 app.post('/api/global/ask', async (req, res) => {
   const q = String(req.body?.question || '').trim();
   if (!q) return bad(res, 400, 'question is required');
+  const answerLanguage = questionLanguage(q);
   try {
     const result = await globalDrugSearch(q);
     const answer = globalAnswer(q, result);
-    if (!answer) return ok(res, { answered: false, global: true, answer: 'No verified global medicine record was found for that name.', answerUr: 'اس نام کی کوئی تصدیق شدہ عالمی دوا کی معلومات نہیں مل سکیں۔', sources: result.sources });
-    ok(res, answer);
+    if (!answer) return ok(res, { answered: false, global: true, answerLanguage,
+      answer: 'No verified global medicine record was found for that name.',
+      answerUr: 'اس نام کی کوئی تصدیق شدہ عالمی دوا کی معلومات نہیں مل سکیں۔',
+      answerRomanUrdu: 'Is naam ki tasdeeq-shuda global dawa ki maloomat nahi mil sakin.',
+      sources: result.sources });
+    ok(res, { ...answer, answerLanguage,
+      answerRomanUrdu: `${answer.drug || 'Is dawa'} ke bare mein global source mein record mila. Tafseeli jawab ke liye apne dawa ke pack ka label dekhein ya pharmacist se poochein.` });
   } catch {
-    ok(res, { answered: false, global: true, answer: 'Global medicine sources are temporarily unavailable. Please try again or use the medicine package name.', answerUr: 'عالمی دوا کے ماخذ اس وقت دستیاب نہیں۔ براہ کرم دوبارہ کوشش کریں یا پیک پر لکھا نام درج کریں۔' });
+    ok(res, { answered: false, global: true, answerLanguage,
+      answer: 'Global medicine sources are temporarily unavailable. Please try again or use the medicine package name.',
+      answerUr: 'عالمی دوا کے ماخذ اس وقت دستیاب نہیں۔ براہ کرم دوبارہ کوشش کریں یا پیک پر لکھا نام درج کریں۔',
+      answerRomanUrdu: 'Global dawa ke sources filhal dastiyab nahi. Dobara koshish karein ya dawa ke pack par likha naam bhejein.' });
   }
 });
 
 app.post('/api/ask', async (req, res) => {
   const q = String(req.body?.question || '').trim();
   if (!q) return bad(res, 400, 'question is required');
+  const answerLanguage = questionLanguage(q);
   const mentioned = engine.findMentionedDrugs(q);
   if (mentioned.length > 1) {
     const review = engine.checkInteractions(mentioned.map((drug) => drug.generic));
     const milkAsked = /milk|dairy|doodh|lassi|yoghurt|dahi/i.test(q);
     const interaction = review.interactions[0];
-    let answer, answerUr;
+    let answer, answerUr, answerRomanUrdu;
     if (interaction) {
       answer = interaction.advice;
       answerUr = interaction.adviceUr;
+      answerRomanUrdu = `${interaction.a} aur ${interaction.b} ke darmiyan sanjeeda interaction ho sakta hai. Jald apne doctor ya pharmacist se rabta karein. Unke mashware ke baghair dawa band ya tabdeel na karein.`;
       if (milkAsked) {
         answer += ' Milk does not remove or prevent this medicine interaction.';
         answerUr += ' دودھ اس دواؤں کے باہمی تعامل کو ختم یا روک نہیں سکتا۔';
+        answerRomanUrdu += ' Doodh is interaction ko khatam nahi karta.';
       }
     } else if (review.coverage !== 'complete') {
       answer = `I could not fully check ${mentioned.map((drug) => drug.generic).join(' and ')} for interactions in the local data. No listed interaction is not proof that the combination is safe; ask a pharmacist or doctor.`;
       answerUr = `${mentioned.map((drug) => drug.urdu).join(' اور ')} کے باہمی تعامل کی مقامی معلومات سے مکمل جانچ نہیں ہو سکی۔ تعامل درج نہ ہونا اس بات کی ضمانت نہیں کہ یہ امتزاج محفوظ ہے؛ ڈاکٹر یا فارماسسٹ سے پوچھیں۔`;
+      answerRomanUrdu = `${mentioned.map((drug) => drug.generic).join(' aur ')} ke interaction ki app ke local data se mukammal jaanch nahi ho saki. Koi interaction listed na hona safety ki guarantee nahi; doctor ya pharmacist se poochein.`;
     } else {
       answer = `No interaction was listed for ${mentioned.map((drug) => drug.generic).join(' and ')} in the app's local interaction data. This does not prove the combination is safe; confirm with a pharmacist or doctor.`;
       answerUr = `ایپ کے مقامی ڈیٹا میں ${mentioned.map((drug) => drug.urdu).join(' اور ')} کے درمیان کوئی تعامل درج نہیں۔ اس کا مطلب یہ نہیں کہ امتزاج یقینی طور پر محفوظ ہے؛ ڈاکٹر یا فارماسسٹ سے تصدیق کریں۔`;
+      answerRomanUrdu = `App ke local data mein ${mentioned.map((drug) => drug.generic).join(' aur ')} ka interaction listed nahi. Is ka matlab yeh nahi ke yeh combination yaqeenan safe hai; doctor ya pharmacist se tasdeeq karein.`;
     }
     return ok(res, {
       answered: true, drug: mentioned.map((drug) => drug.generic).join(', '),
-      severity: interaction?.severity || null, answer, answerUr,
+      severity: interaction?.severity || null, answer, answerUr, answerRomanUrdu, answerLanguage,
       sources: [{ name: 'DDInter 2.0 interaction dataset', url: 'https://ddinter2.scbdd.com/' }],
       disclaimer: 'Interaction screening is not a diagnosis. Do not stop or change prescribed medicines without advice from your doctor or pharmacist.',
     });
@@ -262,43 +287,59 @@ app.post('/api/ask', async (req, res) => {
     try {
       const global = await globalDrugSearch(q);
       const globalResult = globalAnswer(q, global);
-      if (globalResult) return ok(res, globalResult);
+      if (globalResult) return ok(res, { ...globalResult, answerLanguage,
+        answerRomanUrdu: `${globalResult.drug || 'Is dawa'} ke bare mein global record mila, lekin is sawal ka tasdeeq-shuda jawab nahi mila. Dawa ke pack ka label dekhein ya pharmacist se poochein.` });
     } catch { /* local answer remains the safe fallback */ }
-    return ok(res, { answered: false,
+    return ok(res, { answered: false, answerLanguage,
       answer: 'I could not identify the medicine in local or global medicine sources. Please type the exact name as written on the pack.',
-      answerUr: 'میں اس دوا کو مقامی یا عالمی دوا کے ماخذ میں شناخت نہیں کر سکا۔ براہ کرم پیک پر لکھا ہوا درست نام درج کریں۔' });
+      answerUr: 'میں اس دوا کو مقامی یا عالمی دوا کے ماخذ میں شناخت نہیں کر سکا۔ براہ کرم پیک پر لکھا ہوا درست نام درج کریں۔',
+      answerRomanUrdu: 'Main is dawa ko local ya global sources mein pehchan nahi saka. Bara-e-karam pack par likha hua exact naam bhejein.' });
   }
 
   const d = mentioned[0] || engine.getDrug(best.generic);
   const food = engine.foodAdvice(d.generic);
   const label = engine.getLabel(d.generic);
   const lower = q.toLowerCase();
-  let answer, answerUr;
+  let answer, answerUr, answerRomanUrdu;
 
   if (/milk|dairy|doodh|lassi|yoghurt|dahi/.test(lower)) {
     const dairy = food.notes.find((n) => /dairy|Milk/i.test(n.item));
     answer = dairy ? dairy.en : `The app has no specific milk interaction listed for ${d.generic}. This is not proof that every product can be taken with milk; follow the package label or ask a pharmacist.`;
     answerUr = dairy ? dairy.ur : `ایپ میں ${d.urdu} کے ساتھ دودھ کا کوئی مخصوص تعامل درج نہیں۔ اس کا مطلب یہ نہیں کہ ہر دوا دودھ کے ساتھ لی جا سکتی ہے؛ پیک کی ہدایت پر عمل کریں یا فارماسسٹ سے پوچھیں۔`;
+    answerRomanUrdu = dairy?.romanUr || `App mein ${d.generic} ke sath doodh ka koi khaas interaction listed nahi. Is ka matlab yeh nahi ke har product doodh ke sath liya ja sakta hai; pack ka label follow karein ya pharmacist se poochein.`;
   } else if (/kab|when|time|timing|waqt|khani|leni/.test(lower)) {
-    const map = { before_meal: ['Take it before food.', 'کھانے سے پہلے لیں۔'], after_meal: ['Take it after food.', 'کھانے کے بعد لیں۔'], with_meal: ['Take it with food.', 'کھانے کے ساتھ لیں۔'], empty_stomach: ['Take it on an empty stomach, 30-60 minutes before eating.', 'خالی پیٹ، کھانے سے 30-60 منٹ پہلے لیں۔'], morning: ['Take it in the morning.', 'صبح لیں۔'], night: ['Take it at night.', 'رات کو لیں۔'], any: ['It can be taken at any time of day.', 'دن میں کسی بھی وقت لی جا سکتی ہے۔'] };
-    const [en, ur] = map[d.timing] || map.any;
+    const map = {
+      before_meal: ['Take it before food.', 'کھانے سے پہلے لیں۔', 'Isay khane se pehle lein.'],
+      after_meal: ['Take it after food.', 'کھانے کے بعد لیں۔', 'Isay khane ke baad lein.'],
+      with_meal: ['Take it with food.', 'کھانے کے ساتھ لیں۔', 'Isay khane ke sath lein.'],
+      empty_stomach: ['Take it on an empty stomach, 30-60 minutes before eating.', 'خالی پیٹ، کھانے سے 30-60 منٹ پہلے لیں۔', 'Isay khali pait, khane se 30-60 minute pehle lein.'],
+      morning: ['Take it in the morning.', 'صبح لیں۔', 'Isay subah lein.'],
+      night: ['Take it at night.', 'رات کو لیں۔', 'Isay raat ko lein.'],
+      any: ['It can be taken at any time of day.', 'دن میں کسی بھی وقت لی جا سکتی ہے۔', 'Isay din mein kisi bhi waqt liya ja sakta hai.'],
+    };
+    const [en, ur, roman] = map[d.timing] || map.any;
     answer = `${d.generic} — ${en}`; answerUr = `${d.urdu} — ${ur}`;
+    answerRomanUrdu = `${d.generic} — ${roman}`;
   } else if (/side.?effect|nuqsan|reaction/.test(lower)) {
     answer = label?.adverse_reactions || `Common side effects of ${d.generic} are listed on the pack insert.`;
     answerUr = `${d.urdu} کے مضر اثرات کے لیے نیچے دی گئی تفصیل دیکھیں۔`;
+    answerRomanUrdu = `${d.generic} ke mumkin side effects dawa ke pack ke leaflet par diye hote hain. Agar koi serious ya naya symptom ho to doctor ya pharmacist se rabta karein.`;
   } else if (/pregnan|hamal|breastfeed/.test(lower)) {
     answer = label?.pregnancy || 'Pregnancy information is not available for this medicine here — ask a pharmacist.';
     answerUr = 'حمل سے متعلق معلومات کے لیے فارماسسٹ سے پوچھیں۔';
+    answerRomanUrdu = 'Hamal ya breastfeeding ke dauran is dawa ke bare mein apne doctor ya pharmacist se mashwara karein.';
   } else if (/drive|driving|gari/.test(lower)) {
     answer = d.noDriving || d.drowsy ? `${d.generic} can make you drowsy. Do not drive until you know how it affects you.` : `${d.generic} does not usually affect driving.`;
     answerUr = d.noDriving || d.drowsy ? `${d.urdu} سے نیند آ سکتی ہے۔ گاڑی نہ چلائیں۔` : `${d.urdu} عام طور پر ڈرائیونگ پر اثر نہیں کرتی۔`;
+    answerRomanUrdu = d.noDriving || d.drowsy ? `${d.generic} se neend aa sakti hai. Jab tak aap ko iska asar maloom na ho, gari na chalayein.` : `${d.generic} aam tor par driving par asar nahi karti. Agar neend ya chakkar mehsoos hon to gari na chalayein.`;
   } else {
     answer = `${d.generic} (${d.brands[0]}) — ${d.purposeEn}`;
     answerUr = `${d.urdu} — ${d.purposeUr}`;
+    answerRomanUrdu = `${d.generic} — ${d.purposeEn}. Apni dawa ke istemal ke liye pack ka label follow karein ya pharmacist se poochein.`;
   }
 
-  ok(res, { answered: true, drug: d.generic, urdu: d.urdu, confidence: best.confidence,
-    answer, answerUr,
+  ok(res, { answered: true, drug: d.generic, urdu: d.urdu, confidence: best?.confidence || 0.99,
+    answer, answerUr, answerRomanUrdu, answerLanguage,
     sources: food.notes.find((n) => n.sourceUrl) ? [{ name: food.notes.find((n) => n.sourceUrl).source, url: food.notes.find((n) => n.sourceUrl).sourceUrl }] : [],
     disclaimer: 'Information from open medicine data. Not a substitute for a pharmacist or doctor.' });
 });
