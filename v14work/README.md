@@ -103,10 +103,14 @@ flagged as having limited data, and their clinical text was written by hand.
 screens identify medicines without applicable local rules instead of treating them
 as clear. The kidney screen accepts a reported CrCl or estimates adult CrCl using
 Cockcroft–Gault from age, weight, serum creatinine and sex. BMI alone is not used as
-a kidney-function or dose measure. Amikacin has a sourced renal-monitoring alert;
-CrCl below 90 is a conservative app screening trigger, not a manufacturer dose
-cutoff. The app does not calculate its dose, serum levels, or hearing risk. See the
-[DailyMed amikacin label](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f260ff2a-76a0-4672-9516-91c344b67890).
+a kidney-function or dose measure. Amikacin, gentamicin and tobramycin have sourced
+renal-monitoring alerts. CrCl below 90 is a conservative app screening trigger,
+not a manufacturer dose cutoff. These labels concern systemic formulations; route
+must be confirmed with a clinician. The app does not calculate doses or assess
+serum levels or hearing risk. See the DailyMed labels for
+[amikacin](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=f260ff2a-76a0-4672-9516-91c344b67890),
+[gentamicin](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=449c9a41-d61e-49fd-b5e3-d76f74b92acf)
+and [tobramycin](https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ac8134d9-a726-4508-b8b9-a536ef17243d).
 All alerts are screening prompts, not a diagnosis or a replacement for prescriber
 or pharmacist review.
 

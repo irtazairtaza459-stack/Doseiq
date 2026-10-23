@@ -42,6 +42,22 @@ test('shows amikacin monitoring guidance even without a low CrCl result', () => 
   assert.equal(missing.incomplete !== null, true);
 });
 
+test('screens systemic aminoglycosides for renal risk without calculating doses', () => {
+  for (const generic of ['Amikacin', 'Gentamicin', 'Tobramycin']) {
+    const reduced = organReview([generic], { kidney: { crcl: 45, stage: 'moderate' } });
+    const normal = organReview([generic], { kidney: { crcl: 100, stage: 'normal' } });
+    const missing = organReview([generic]);
+
+    assert.equal(reduced.flags[0].drug, generic);
+    assert.equal(reduced.flags[0].level, 'adjust');
+    assert.match(reduced.flags[0].message, /cannot calculate .* dose/i);
+    assert.match(reduced.flags[0].sourceUrl, /dailymed\.nlm\.nih\.gov/);
+    assert.equal(normal.flags[0].level, 'caution');
+    assert.equal(missing.flags[0].level, 'caution');
+    assert.ok(missing.unchecked.includes(generic));
+  }
+});
+
 test('reports medicines without kidney rules as unchecked, not clear', () => {
   const result = organReview(['Aspirin'], { kidney: { crcl: 100, stage: 'normal' } });
   assert.deepEqual(result.unchecked, ['Aspirin']);
@@ -63,4 +79,11 @@ test('checks Amikacin interaction pairs in the local DDInter dataset', () => {
   assert.equal(result.interactions.length, 1);
   assert.equal(result.interactions[0].severity, 'major');
   assert.doesNotMatch(result.interactions[0].advice, /stop taking/i);
+});
+
+test('recognizes named aminoglycosides in interaction checks', () => {
+  const result = checkInteractions(['Gentamicin', 'Tobramycin']);
+  assert.equal(result.coverage, 'complete');
+  assert.equal(result.summary.checkedPairs, 1);
+  assert.deepEqual(result.duplicates, [{ group: 'aminoglycoside', drugs: ['Gentamicin', 'Tobramycin'] }]);
 });

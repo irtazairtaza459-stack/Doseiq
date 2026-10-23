@@ -374,6 +374,52 @@
     }
   },
   {
+    "generic": "Gentamicin",
+    "ddinter": "Gentamicin",
+    "brands": [],
+    "urdu": "جینٹامائسن",
+    "purposeEn": "Aminoglycoside antibiotic",
+    "purposeUr": "امینوگلیکوسائیڈ اینٹی بائیوٹک",
+    "class": "antibiotic",
+    "allergyGroup": "aminoglycoside",
+    "timing": "any",
+    "missedRule": "clinician",
+    "course": true,
+    "interactionData": "ddinter",
+    "renal": {
+      "adjustBelow": 90,
+      "note": "Systemic gentamicin is cleared by the kidneys. Its official label advises renal monitoring and dosage adjustment when renal function is impaired. CrCl below 90 is this app's conservative screening trigger, not a manufacturer dose cutoff. Confirm the formulation and contact the prescriber or pharmacist; this app cannot calculate a dose.",
+      "noteUr": "جسم میں دی جانے والی جینٹامائسن گردوں کے ذریعے خارج ہوتی ہے۔ سرکاری لیبل کے مطابق گردوں کی خرابی میں نگرانی اور خوراک کی تبدیلی ضروری ہو سکتی ہے۔ 90 سے کم CrCl اس ایپ کا محتاط جانچ کا اشارہ ہے، دوا ساز کی خوراک کی حد نہیں۔ دوا کی قسم کی تصدیق کرکے تجویز کنندہ یا فارماسسٹ سے رابطہ کریں؛ یہ ایپ خوراک طے نہیں کر سکتی۔",
+      "monitorNote": "Systemic gentamicin requires clinician monitoring of kidney function and toxicity even when this CrCl screen is not low. Route matters; this app does not assess serum drug levels or hearing.",
+      "monitorNoteUr": "جسم میں دی جانے والی جینٹامائسن کے لیے CrCl کم نہ ہونے پر بھی گردوں اور زہریلے اثرات کی طبی نگرانی ضروری ہے۔ دوا دینے کا طریقہ اہم ہے؛ یہ ایپ خون میں دوا کی سطح یا سماعت نہیں جانچتی۔",
+      "source": "DailyMed: Gentamicin Sulfate in Sodium Chloride Injection, Baxter",
+      "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=449c9a41-d61e-49fd-b5e3-d76f74b92acf"
+    }
+  },
+  {
+    "generic": "Tobramycin",
+    "ddinter": "Tobramycin",
+    "brands": [],
+    "urdu": "ٹوبرامائسن",
+    "purposeEn": "Aminoglycoside antibiotic",
+    "purposeUr": "امینوگلیکوسائیڈ اینٹی بائیوٹک",
+    "class": "antibiotic",
+    "allergyGroup": "aminoglycoside",
+    "timing": "any",
+    "missedRule": "clinician",
+    "course": true,
+    "interactionData": "ddinter",
+    "renal": {
+      "adjustBelow": 90,
+      "note": "Systemic tobramycin is cleared by the kidneys. Its official label advises renal monitoring and dosage adjustment when renal function is impaired. CrCl below 90 is this app's conservative screening trigger, not a manufacturer dose cutoff. Confirm the formulation and contact the prescriber or pharmacist; this app cannot calculate a dose.",
+      "noteUr": "جسم میں دی جانے والی ٹوبرامائسن گردوں کے ذریعے خارج ہوتی ہے۔ سرکاری لیبل کے مطابق گردوں کی خرابی میں نگرانی اور خوراک کی تبدیلی ضروری ہو سکتی ہے۔ 90 سے کم CrCl اس ایپ کا محتاط جانچ کا اشارہ ہے، دوا ساز کی خوراک کی حد نہیں۔ دوا کی قسم کی تصدیق کرکے تجویز کنندہ یا فارماسسٹ سے رابطہ کریں؛ یہ ایپ خوراک طے نہیں کر سکتی۔",
+      "monitorNote": "Systemic tobramycin requires clinician monitoring of kidney function and toxicity even when this CrCl screen is not low. Route matters; this app does not assess serum drug levels or hearing.",
+      "monitorNoteUr": "جسم میں دی جانے والی ٹوبرامائسن کے لیے CrCl کم نہ ہونے پر بھی گردوں اور زہریلے اثرات کی طبی نگرانی ضروری ہے۔ دوا دینے کا طریقہ اہم ہے؛ یہ ایپ خون میں دوا کی سطح یا سماعت نہیں جانچتی۔",
+      "source": "DailyMed: Tobramycin Injection, Mylan",
+      "sourceUrl": "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=ac8134d9-a726-4508-b8b9-a536ef17243d"
+    }
+  },
+  {
     "generic": "Ciprofloxacin",
     "ddinter": "Ciprofloxacin",
     "brands": [
