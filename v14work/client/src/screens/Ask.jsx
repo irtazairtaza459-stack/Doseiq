@@ -98,7 +98,9 @@ export default function Ask({ t, lang, notify }) {
                 <span className="badge">{t(`safety.${m.severity}`)}</span>
               </div>
             )}
-            {m.who === 'bot' && m.en ? (lang === 'ur' ? m.ur : m.en) : m.text}
+            {m.who === 'bot' && m.en
+              ? (m.answerLanguage === 'roman' ? m.romanUrdu : m.answerLanguage === 'ur' ? m.ur : m.en)
+              : m.text}
             {m.who === 'bot' && m.drug && (
               <button className="btn sm" style={{ marginTop: 8 }} onClick={() => speak(m.en, m.ur, m.romanUrdu, m.answerLanguage)}>
                 <Icon name="speaker" /> {t('ask.listen')}
