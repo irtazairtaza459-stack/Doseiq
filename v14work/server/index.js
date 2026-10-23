@@ -24,7 +24,8 @@ function questionLanguage(question) {
     'kia', 'kiya', 'kya', 'main', 'mein', 'mujhe', 'mera', 'meri', 'ko', 'ke',
     'ka', 'ki', 'sath', 'saath', 'lon', 'loon', 'leni', 'lena', 'hai', 'hain',
     'kab', 'kyun', 'aur', 'dawa', 'dawai', 'sakta', 'sakti', 'nahi', 'nahin',
-    'karo', 'karun', 'chahiye', 'raha', 'rahi', 'lo',
+    'karo', 'karun', 'chahiye', 'raha', 'rahi', 'lo', 'mai', 'hu', 'hoon',
+    'kay', 'lay', 'kaise',
   ]);
   return tokens.some((token) => romanUrduMarkers.has(token)) ? 'roman' : 'en';
 }
@@ -254,7 +255,7 @@ app.post('/api/ask', async (req, res) => {
   const mentioned = engine.findMentionedDrugs(q);
   if (mentioned.length > 1) {
     const review = engine.checkInteractions(mentioned.map((drug) => drug.generic));
-    const milkAsked = /milk|dairy|doodh|lassi|yoghurt|dahi/i.test(q);
+    const milkAsked = /milk|dairy|doodh|lassi|yoghurt|dahi|دودھ|دہی|لسی/i.test(q);
     const interaction = review.interactions[0];
     let answer, answerUr, answerRomanUrdu;
     if (interaction) {
@@ -302,7 +303,7 @@ app.post('/api/ask', async (req, res) => {
   const lower = q.toLowerCase();
   let answer, answerUr, answerRomanUrdu;
 
-  if (/milk|dairy|doodh|lassi|yoghurt|dahi/.test(lower)) {
+  if (/milk|dairy|doodh|lassi|yoghurt|dahi|دودھ|دہی|لسی/i.test(lower)) {
     const dairy = food.notes.find((n) => /dairy|Milk/i.test(n.item));
     answer = dairy ? dairy.en : `The app has no specific milk interaction listed for ${d.generic}. This is not proof that every product can be taken with milk; follow the package label or ask a pharmacist.`;
     answerUr = dairy ? dairy.ur : `ایپ میں ${d.urdu} کے ساتھ دودھ کا کوئی مخصوص تعامل درج نہیں۔ اس کا مطلب یہ نہیں کہ ہر دوا دودھ کے ساتھ لی جا سکتی ہے؛ پیک کی ہدایت پر عمل کریں یا فارماسسٹ سے پوچھیں۔`;

@@ -55,8 +55,12 @@ test('answers Urdu-script questions in Urdu and English questions in English', a
     return response.json();
   };
 
-  assert.equal((await ask('کیا میں Doxycycline دودھ کے ساتھ لے سکتا ہوں؟')).answerLanguage, 'ur');
-  assert.equal((await ask('Can I take Doxycycline with milk?')).answerLanguage, 'en');
+  const urdu = await ask('کیا میں Doxycycline دودھ کے ساتھ لے سکتا ہوں؟');
+  assert.equal(urdu.answerLanguage, 'ur');
+  assert.match(urdu.answerUr, /دودھ/);
+  const english = await ask('Can I take Doxycycline with milk?');
+  assert.equal(english.answerLanguage, 'en');
+  assert.match(english.answer, /food or milk/i);
 });
 
 test('checks all named medicines in natural-language interaction questions', async (t) => {
